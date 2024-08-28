@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CreatePatient</title>
+</head>
+<body>
+<div th:if="${param.success}" class="alert success">
+  <span class="closebtn">&times;</span>
+  You are registered successfully!
+</div>
+<div>
+  <h2>Register</h2>
+
+
+      <form role="form" method="post" th:action="@{/patient/create}" th:object="${patient}">
+          <h2>Enter Your Details</h2>
+          <div>
+            <label for="fname">First Name</label>
+            <input
+                  type="text"
+                  id="fname"
+                  name="patient_fname"
+                  th:field="*{patient_fname}"
+                  placeholder="First Name">
+          </div>
+          <div>
+            <label for="lname">Last Name</label>
+            <input
+                    type="text"
+                    id="lname"
+                    name="patient_lname"
+                    th:field="*{patient_lname}"
+                    placeholder="Last Name">
+          </div>
+
+          <div class="createbtn">
+              <button id="createbtn1" type="submit" >Submit</button>
+          </div>
+      </form>
+</div>
+<script>
+  var close = document.getElementsByClassName("closebtn");
+  var i;
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(){
+      var div = this.parentElement;
+      div.style.opacity = "0";
+      setTimeout(function(){ div.style.display = "none"; }, 600);
+    }
+  }
+</script>
+</body>
+</html>

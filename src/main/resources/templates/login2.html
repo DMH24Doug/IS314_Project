@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SignUp/Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<nav>
+
+    <img src="logo.png" alt="Logo" class="logo">
+
+    <h1>CWM HEALTH WEBPAGE</h1>
+    <ul>
+        <li ><a href="home.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+
+    </ul>
+</nav>
+<div  th:if="${param.error}" class="alert">
+    <span class="closebtn">&times;</span>
+    <strong>Warning! </strong>Invalid username and password.
+</div>
+<div th:if="${param.logout}" class="alert info">
+    <span class="closebtn">&times;</span>
+    <strong>Successfully! </strong>logged out.
+</div>
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup">
+        <form method="post" role="form" th:action="@{/login/save}" th:object="${user}">
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input
+                    type="text"
+                    name="txt"
+                    placeholder="Username"
+                    th:field="*{username}"
+                    required autocomplete="off"/>
+            <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    th:field="*{email}"
+                    required autocomplete="off"/>
+            <input
+                    type="password"
+                    name="pswd"
+                    placeholder="Password"
+                    th:field="*{password}"
+                    required autocomplete="off"/>
+            <button  th:href="@{/register}" type="submit">Sign up</button>
+        </form>
+    </div>
+
+    <div class="login">
+        <form method="post" th:action="@{/login}">
+            <label for="chk" aria-hidden="true">Login</label>
+            <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    required autocomplete="off"/>
+            <input
+                    id="password"
+                    type="password"
+                    name="pswd"
+                    placeholder="Password"
+                    required autocomplete="off"/>
+            <button type="submit" value="Log in">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div style="text-align: center; margin-top: 100px;">
+    <h1>WELCOME TO CWM HOMEPAGE</h1>
+
+    </div>
+<div>
+    <button><a class="active" th:href="@{/logout}">Logout</a></button>
+</div>
+<article>
+    <table>
+        <tbody>
+        <tr>
+            <td>Employee ID</td>
+            <td th:Text="${patient.id}" ></td>
+        </tr>
+        <tr>
+            <td>Employee First Name</td>
+            <td th:Text="${patient.patient_fname}" ></td>
+        </tr>
+        <tr>
+            <td>Employee Last Name</td>
+            <td th:Text="${patient.patient_lname}" ></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+</article>
+
+
+</body>
+</html>

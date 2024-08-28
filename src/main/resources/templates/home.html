@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<nav>
+
+    <img th:src="@{/image/logo.png}" alt="Logo" class="logo">
+
+    <h1>CWM HEALTH WEBPAGE</h1>
+    <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li ><a th:href="@{/login}" class="signin">Sign In</a></li>
+    </ul>
+</nav>
+</body>
+</html>

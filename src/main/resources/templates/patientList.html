@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="topnav">
+  <a class="active" th:href="@{/logout}">Logout</a>
+
+</div>
+<div >
+  <table>
+    <tbody>
+    <tr>
+      <th>Employee ID</th>
+      <th>Employee First Name</th>
+      <th>Employee Last Name</th>
+
+
+
+    </tr>
+    <tr th:each="patients :${patient}" >
+      <td th:Text="${patients.id}" ></td>
+      <td th:Text="${patients.patient_fname}" ></td>
+      <td th:Text="${patients.patient_lname}" ></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

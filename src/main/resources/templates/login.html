@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<section>
+    <div  th:if="${param.error}" class="alert">
+        <span class="closebtn">&times;</span>
+        <strong>Warning! </strong>Invalid username and password.
+    </div>
+    <div th:if="${param.logout}" class="alert info">
+        <span class="closebtn">&times;</span>
+        <strong>Successfully! </strong>logged out.
+    </div>
+
+    <div class="loginFormContainer">
+        <div class="loginForm">
+            <form method="post" th:action="@{/login}" >
+                <h1>Login Form</h1>
+
+                <section class="input1">
+                    <label>Username:</label>
+                    <input
+                            id="username"
+                            type="text"
+                            class="form-control"
+                            placeholder="Username"
+                            name="username">
+                </section>
+
+                <section class="input2">
+                    <label>Password:</label>
+                    <input
+                            id="password"
+                            type="password"
+                            class="form-control"
+                            placeholder="Password"
+                            name="password">
+                </section>
+
+                <section class="btnInput">
+                    <button id="btn1" type="submit" value="Log in" class="btn btn-secondary">Login</button> <br/>
+                    <a th:href="@{/register}">Register here.</a>
+                </section>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+        }
+    }
+</script>
+</body>
+</html>

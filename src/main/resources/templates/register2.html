@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/Style_.css}">
+</head>
+<body>
+<div id="signup">
+  <h1>Sign Up for Free</h1>
+  <div th:if="${param.fail}" class="alert warning">
+    <span class="closebtn">&times;</span>
+    <strong>Invalid! </strong>Username or email already exists!
+  </div>
+
+  <form method="post" role="form" th:action="@{/register/save}" th:object="${user} ">
+
+    <div class="top-row">
+      <div class="field-wrap">
+        <label>
+          Username<span class="req">*</span>
+          <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                  th:field="*{username}"
+                  required autocomplete="off"/>
+        </label>
+
+      </div>
+      <p th:if="${#fields.hasErrors('username')}" class="text-danger"></p>
+      <div class="field-wrap">
+        <label>
+          Email Address<span class="req">*</span>
+          <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                  th:field="*{email}"
+                  required autocomplete="off"/>
+        </label>
+
+      </div>
+      <p th:if="${#fields.hasErrors('email')}" class="text-danger"></p>
+      <div class="field-wrap">
+        <label>
+          Set A Password<span class="req">*</span>
+          <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  th:field="*{password}"
+                  required autocomplete="off"/>
+        </label>
+
+      </div>
+      <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+
+    <button id="registerbtn1" th:href="@{/register}" type="submit" class="button button-block">Register</button><br></div>
+
+  </form>
+
+</div>
+<script src="/js/script.js"></script>
+</body>
+</html>
