@@ -7,14 +7,14 @@
 </head>
 <body>
 <div class="header">
-    <img src="hospital_logo.png" alt="Hospital Logo" class="logo">
+    <img th:src="logo.png" alt="Hospital Logo" class="logo">
     <button class="logout"><a th:href="@{/logout}">Logout</a></button>
 </div>
 <div class="container">
     <div class="sidebar">
-        <button class="active">Profile</button>
-        <button ><a href="#">Health Records</a></button>
-        <button>Appointments</button>
+        <button class="active"><a>Profile</a></button>
+        <button ><a th:href="@{/patient/health_record}">Health Records</a></button>
+        <button><a th:href="@{/patient/appointment}">Appointments</a></button>
         <button>Payments</button>
     </div>
 

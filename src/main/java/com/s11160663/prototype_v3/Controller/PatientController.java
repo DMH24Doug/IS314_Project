@@ -62,14 +62,13 @@ public class PatientController {
     @GetMapping("/patient/patient_home/{Id}")
     public String patient_save(@PathVariable("Id") Long id,Model model) {
         PatientDTO patientDTO = patientService.findPatientById(id);
-
-
-            model.addAttribute("patient", patientDTO);
-
+        model.addAttribute("patient", patientDTO);
 
         //return view for patient home
         return "patient_home";
     }
+
+
 
 //    @GetMapping("/patient/patient_home")
 //    public String patientHome(Model model) {
@@ -85,5 +84,24 @@ public class PatientController {
 //        // Return view for patient home
 //        return "patient_home";
 //    }
+
+
+    //TODO methods to view health records
+    @GetMapping("/patient/health_record")
+    public String patient_health_record(Model model) {
+        return "patientHealth_records";
+    }
+    //TODO methods for requesting appointment
+    @GetMapping("/patient/request_schedule")
+    public String request_schedule(Model model) {
+        return "request";
+    }
+
+    //TODO methods for appointment
+    @GetMapping("/patient/appointment")
+    public String appointment(Model model) {
+        return "patient_appointment";
+    }
+
 
 }
