@@ -8,6 +8,9 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String admin() {
+
         return "admin_home";
     }
+
+    //TODO add controls and method for admin to add doctor
 }

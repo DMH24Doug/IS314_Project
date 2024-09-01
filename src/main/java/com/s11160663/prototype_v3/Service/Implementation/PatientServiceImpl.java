@@ -38,10 +38,13 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientEntity savePatient(PatientDTO patientDTO) {
-        String username = SecurityUtil.getSessionUser();
-        UserEntity user = userRepository.findByName(username);
+        //TODO implement session user
+        //String username = SecurityUtil.getSessionUser();
+        //UserEntity user = userRepository.findByName(username);
         PatientEntity patient = PatientMapper.mapToPatient(patientDTO);
-        patient.setCreatedBy(user);
+
+        //after creating patient -> sets patient to current user
+      //  user.setPatient(patient);
         return patientRepository.save(patient);
     }
 

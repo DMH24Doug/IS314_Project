@@ -3,36 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <link rel="stylesheet" th:href="@{/css/style_v1.css}" />
 </head>
 <body>
-<div style="text-align: center; margin-top: 100px;">
-    <h1>WELCOME TO CWM HOMEPAGE</h1>
+<div class="header">
+    <img src="hospital_logo.png" alt="Hospital Logo" class="logo">
+    <button class="logout"><a th:href="@{/logout}">Logout</a></button>
+</div>
+<div class="container">
+    <div class="sidebar">
+        <button class="active">Profile</button>
+        <button ><a href="#">Health Records</a></button>
+        <button>Appointments</button>
+        <button>Payments</button>
+    </div>
+
+
+
+    <div class="content">
+        <table>
+            <tr>
+                <th>Patient ID:</th>
+                <td th:text="${patient.id}"></td>
+            </tr>
+            <tr>
+                <th>First Name:</th>
+                <td th:text="${patient.patient_fname}"></td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td th:text="${patient.patient_lname}"></td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td th:text="${patient.phoneNumber}"></td>
+            </tr>
+
+            <tr>
+                <th>Address:</th>
+                <td th:text="${patient.address}"></td>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td th:text="${patient.gender}"></td>
+            </tr>
+            <tr>
+                <th>Date of Birth:</th>
+                <td th:text="${#dates.format(patient.dateOfBirth, 'yyyy-MM-dd')}"></td>
+            </tr>
+            <tr>
+                <th>Emergency Contact Name:</th>
+                <td th:text="${patient.emergencyContactName}"></td>
+            </tr>
+            <tr>
+                <th>Emergency Contact Phone:</th>
+                <td th:text="${patient.emergencyContactPhone}"></td>
+            </tr>
+        </table>
 
     </div>
-<div>
-    <button><a class="active" th:href="@{/logout}">Logout</a></button>
+
+
 </div>
-<article>
-    <table>
-        <tbody>
-        <tr>
-            <td>Employee ID</td>
-            <td th:Text="${patient.id}" ></td>
-        </tr>
-        <tr>
-            <td>Employee First Name</td>
-            <td th:Text="${patient.patient_fname}" ></td>
-        </tr>
-        <tr>
-            <td>Employee Last Name</td>
-            <td th:Text="${patient.patient_lname}" ></td>
-
-        </tr>
-
-        </tbody>
-    </table>
-</article>
+<script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            header.classList.toggle('active');
+        });
+    });
+</script>
 
 
 </body>

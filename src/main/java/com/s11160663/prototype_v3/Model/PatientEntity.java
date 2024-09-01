@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -26,14 +27,27 @@ public class PatientEntity {
     private Long id;
     private String patient_fname;
     private String patient_lname;
+    private Date dateOfBirth;
+    private String gender;
+    private String address;
+    private String phoneNumber;
+    private String emergencyContactName;
+    private String emergencyContactPhone;
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
-    private UserEntity createdBy;
 
-    //use this same concept to display prescriptions
-//    @ManyToMany(mappedBy = "employees")
-//    private List<Payroll> payrolls = new ArrayList<>();
+    //1-1 relationship to user Entity
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
+
+    //M-M relationship to prescriptions Entity
+    @ManyToMany(mappedBy="patient")
+    private List<PrescriptionEntity> prescriptions = new ArrayList<>();
+
+    //M-M relationship to schedules Entity
+    @ManyToMany(mappedBy="patient")
+    private List<PrescriptionEntity> schedules = new ArrayList<>();
+
 
 }
 

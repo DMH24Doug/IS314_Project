@@ -2,54 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}">
 </head>
 <body>
-<section>
-    <div  th:if="${param.error}" class="alert">
-        <span class="closebtn">&times;</span>
-        <strong>Warning! </strong>Invalid username and password.
-    </div>
-    <div th:if="${param.logout}" class="alert info">
-        <span class="closebtn">&times;</span>
-        <strong>Successfully! </strong>logged out.
-    </div>
 
-    <div class="loginFormContainer">
-        <div class="loginForm">
-            <form method="post" th:action="@{/login}" >
-                <h1>Login Form</h1>
+            <div  th:if="${param.error}" class="alert">
+                <span class="closebtn">&times;</span>
+                <strong>Warning! </strong>Invalid username and password.
+            </div>
+            <div th:if="${param.logout}" class="alert info">
+                <span class="closebtn">&times;</span>
+                <strong>Successfully! </strong>logged out.
+            </div>
 
-                <section class="input1">
-                    <label>Username:</label>
-                    <input
-                            id="username"
-                            type="text"
-                            class="form-control"
-                            placeholder="Username"
-                            name="username">
-                </section>
+            <div class="container_log">
+                <div class="logo">
+                    <img src="_logo.png" alt="Hospital Logo" >
+                </div>
+                <form  method="post" th:action="@{/login}">
+                    <div class="login-box">
+                        <h2>Login</h2>
+                        <input
+                                id="username"
+                                type="text"
+                                class="form-control"
+                                placeholder="Username"
+                                name="username">
+                        <input
+                                id="password"
+                                type="password"
+                                class="form-control"
+                                placeholder="Password"
+                                name="password">
 
-                <section class="input2">
-                    <label>Password:</label>
-                    <input
-                            id="password"
-                            type="password"
-                            class="form-control"
-                            placeholder="Password"
-                            name="password">
-                </section>
+                        <div style="display: flex;">
+                            <a href="#" style="margin-right: 100px;">Forgot Password</a>
+                            <a th:href="@{/register}">Sign Up</a>
+                        </div>
+                        <button  type="submit" value="Log in">Login</button>
+                    </div>
+                </form>
+            </div>
 
-                <section class="btnInput">
-                    <button id="btn1" type="submit" value="Log in" class="btn btn-secondary">Login</button> <br/>
-                    <a th:href="@{/register}">Register here.</a>
-                </section>
-            </form>
-        </div>
-    </div>
-    </div>
-    </div>
-</section>
+
 <script>
     var close = document.getElementsByClassName("closebtn");
     var i;

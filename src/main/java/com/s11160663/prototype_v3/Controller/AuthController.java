@@ -1,6 +1,8 @@
 package com.s11160663.prototype_v3.Controller;
 
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.ui.Model;
 import com.s11160663.prototype_v3.DTO.RegistrationDTO;
 import com.s11160663.prototype_v3.Model.UserEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Collection;
 
 
 @Controller
@@ -31,9 +34,9 @@ public class AuthController {
 
     //user login page
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Authentication authentication) {
 //        if (authentication != null && authentication.isAuthenticated()) {
-//            //String username = authentication.getName();
+//            String username = authentication.getName();
 //
 //            //retrieving user details to get userID
 //            UserEntity user = (UserEntity) authentication.getPrincipal();
@@ -44,47 +47,47 @@ public class AuthController {
 //            for (GrantedAuthority authority : authorities) {
 //                String role = authority.getAuthority();
 //                if (role.equals("ADMIN")) {
-//                    return "redirect:/admin/" + userId;
+//                    return "redirect:/admin" + userId;
 //                }else if (role.equals("EMPLOYEE")) {
-//                    return "redirect:/employee/" + userId;
+//                    return "redirect:/employee" + userId;
 //                }else if (role.equals("PATIENT")) {
-//                    return "redirect:/patient/" + userId;
+//                    return "redirect:/patient" + userId;
 //                }
 //            }
 //        }
 
-        RegistrationDTO user = new RegistrationDTO();
-        model.addAttribute("user", user);
-        return "login2";
+
+        return "login";
     }
 
 //    //user registration page
-//    @GetMapping("/register")
-//    public String register(Model model) {
-//        //creates new user (if registration is successful)
-//
-//        return "sign_in";
-//
-//    }
+    @GetMapping("/register")
+    public String register(Model model) {
+        //creates new user (if registration is successful)
+        RegistrationDTO user = new RegistrationDTO();
+        model.addAttribute("user", user);
+        return "register";
+
+    }
 
     //post methods for registration page
-    @PostMapping("/login/save")
+    @PostMapping("/register/save")
     public String register(@Valid @ModelAttribute("user") RegistrationDTO user,
                            BindingResult result, Model model) {
         //finds user by email (check if user already exist or not)
         UserEntity existingUserEmail = userService.findByEmail(user.getEmail());
         //if email matches existing one app will return (invalid)
         if(existingUserEmail != null && existingUserEmail.getEmail() != null && !existingUserEmail.getEmail().isEmpty()) {
-            return "redirect:/login?fail";
+            return "redirect:/register?fail";
         }
         //finds user by email (check if user already exist or not)
         UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
         if(existingUserUsername != null && existingUserUsername.getName() != null && !existingUserUsername.getName().isEmpty()) {
-            return "redirect:/login?fail";
+            return "redirect:/register?fail";
         }
         if(result.hasErrors()) {
             model.addAttribute("user", user);
-            return "login2";
+            return "register";
         }
         userService.saveUser(user);
         return "redirect:/patient/create?success";

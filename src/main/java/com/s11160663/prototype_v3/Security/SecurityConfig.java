@@ -30,14 +30,15 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                .requestMatchers("/login/**", "/register", "/patient","/css/**", "/assets/**","/js/**")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/chatbot/","/login/**", "/register", "/patient","/css/**", "/assets/**","/js/**")
                 .permitAll()
                 .and()
 
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/patient")
                         .loginProcessingUrl("/login")
+                        .successHandler(new CustomAuthSuccessHandler())
                         .failureUrl("/login?error=true")
                         .permitAll()
                 ).logout(

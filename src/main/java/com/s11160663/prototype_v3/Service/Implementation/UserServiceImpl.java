@@ -1,11 +1,13 @@
 package com.s11160663.prototype_v3.Service.Implementation;
 
 import com.s11160663.prototype_v3.DTO.RegistrationDTO;
+import com.s11160663.prototype_v3.Model.PatientEntity;
 import com.s11160663.prototype_v3.Model.Roles;
 import com.s11160663.prototype_v3.Model.UserEntity;
 import com.s11160663.prototype_v3.Repository.PatientRepository;
 import com.s11160663.prototype_v3.Repository.RoleRepository;
 import com.s11160663.prototype_v3.Repository.UserRepository;
+import com.s11160663.prototype_v3.Service.PatientService;
 import com.s11160663.prototype_v3.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,15 +31,21 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public void saveUser(RegistrationDTO registrationDto) {
+
         UserEntity user = new UserEntity();
+        PatientEntity patient = new PatientEntity();
+        Roles role = roleRepository.findByName("PATIENT");
+
+
         user.setName(registrationDto.getUsername());
         user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
         user.setEmail(registrationDto.getEmail());
-        Roles role = roleRepository.findByName("PATIENT");
         user.setRoles(Collections.singletonList(role));
 
-
+        //saves current user
         userRepository.save(user);
+
+
     }
 
     @Override

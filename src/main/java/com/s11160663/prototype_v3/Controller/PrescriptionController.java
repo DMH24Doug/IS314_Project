@@ -4,4 +4,6 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class PrescriptionController {
+
+    //TODO implementing controls for prescription
 }
