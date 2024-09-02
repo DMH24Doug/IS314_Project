@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collection;
 
@@ -73,23 +74,29 @@ public class AuthController {
     //post methods for registration page
     @PostMapping("/register/save")
     public String register(@Valid @ModelAttribute("user") RegistrationDTO user,
-                           BindingResult result, Model model) {
-        //finds user by email (check if user already exist or not)
+                           BindingResult result, RedirectAttributes redirectAttributes) {
+        // Find user by email (check if user already exists)
         UserEntity existingUserEmail = userService.findByEmail(user.getEmail());
-        //if email matches existing one app will return (invalid)
         if(existingUserEmail != null && existingUserEmail.getEmail() != null && !existingUserEmail.getEmail().isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Email already in use.");
             return "redirect:/register?fail";
         }
-        //finds user by email (check if user already exist or not)
+
+        // Find user by username (check if user already exists)
         UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
         if(existingUserUsername != null && existingUserUsername.getName() != null && !existingUserUsername.getName().isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Username already in use.");
             return "redirect:/register?fail";
         }
+
         if(result.hasErrors()) {
-            model.addAttribute("user", user);
-            return "register";
+            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
+            return "redirect:/register";
         }
+
         userService.saveUser(user);
+        redirectAttributes.addFlashAttribute("success", "Registration successful!");
         return "redirect:/patient/create?success";
     }
+
 }

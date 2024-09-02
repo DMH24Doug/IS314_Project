@@ -54,7 +54,12 @@ public class PatientController {
     }
     @PostMapping("/patient/create")
     public String create(@ModelAttribute("patient") PatientDTO patientDTO) {
-       PatientEntity savedPatient =  patientService.savePatient(patientDTO);
+
+        PatientEntity savedPatient =  patientService.savePatient(patientDTO);
+
+//        String username = SecurityUtil.getSessionUser();
+//        UserEntity user = userService.findByUsername(username) ;
+//        user.setPatient(savedPatient);
 
         return "redirect:/patient/patient_home/" + savedPatient.getId();
     }

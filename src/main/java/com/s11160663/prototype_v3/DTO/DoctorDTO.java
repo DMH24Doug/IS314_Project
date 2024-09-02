@@ -22,4 +22,5 @@ public class DoctorDTO {
     private String emergencyContactName;
     private String emergencyContactPhone;
     private UserEntity createdBy;
+
 }
