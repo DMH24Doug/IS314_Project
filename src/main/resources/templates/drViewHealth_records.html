@@ -5,6 +5,33 @@
     <title>Title</title>
 </head>
 <body>
+<div class="header">
+    <img th:src="hospital_logo.png" alt="Hospital Logo" class="logo">
+    <button class="logout"><a th:href="@{/logout}">Logout</a></button>
+</div>
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button class="active"><a >Profile</a></button>
+        <button ><a th:href="@{/patient/health_record}">Health Records</a></button>
+        <button><a th:href="@{/patient/appointment}">Appointments</a></button>
+        <button ><a href="#">Payments</a></button>
+    </div>
 
+    <!-- Content -->
+    <div class="content">
+        <div class="form-group">
+            <input type="text" placeholder="Enter Patient ID">
+            <button class="search-button">Search</button>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <textarea placeholder="Reason for this Email, And also listing the Amount that needs to be Paid"></textarea>
+        </div>
+        <button class="proceed-payment">Send Email</button>
+    </div>
+</div>
 </body>
 </html>

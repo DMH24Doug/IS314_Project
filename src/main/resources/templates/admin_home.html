@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style_v1.css}">
 </head>
 <body>
 <header>
@@ -15,11 +15,11 @@
 <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-        <button class="active">Dashboard</button>
-        <button>View Patients</button>
-        <button>View Doctors</button>
-        <button>Manage Appointments</button>
-        <button>Manage Payments</button>
+        <button class="active"><a th:href="@{/admin}">Dashboard</a></button>
+        <button ><a th:href="@{/admin/view_patientList}">View Patients</a></button>
+        <button ><a th:href="@{/admin/view_doctorList}">View Doctors</a></button>
+        <button >Manage Appointments</button>
+        <button >Manage Payments</button>
     </div>
 
     <!-- Content -->
@@ -29,8 +29,8 @@
 
         <!-- Action Buttons -->
         <div class="form-group">
-            <button class="action-button">View Patients</button>
-            <button class="action-button">View Doctors</button>
+            <button class="action-button"><a th:href="@{admin/view_patientList}">View Patients</a></button>
+            <button class="action-button"><a th:href="@{admin/view_doctorList}">View Doctors</a></button>
         </div>
 
         <!-- Dashboard Information -->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style_v1.css}">
+</head>
+<body>
+
+<header>
+    <img src="hospital-logo.png" alt="Hospital Logo" class="logo">
+    <button class="logout">Logout</button>
+</header>
+
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button ><a th:href="@{/admin}">Dashboard</a></button>
+        <button class="active"><a th:href="@{/admin/view_patientList}">View Patients</a></button>
+        <button  ><a th:href="@{/admin/view_doctorList}">View Doctors</a></button>
+        <button >Manage Appointments</button>
+        <button >Manage Payments</button>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient : ${patients}">
+                <td th:text="${patient.id}"></td>
+                <td th:text="${patient.patient_fname}"></td>
+                <td th:text="${patient.patient_lname}"></td>
+                <td><button class="view-details">View Details</button></td>
+            </tr>
+            <!-- Additional doctor rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // Optional JavaScript for additional functionality
+</script>
+</body>
+</html>

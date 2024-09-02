@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Dr Home</title>
+  <title>Home</title>
+  <link rel="stylesheet" th:href="@{/css/style_v1.css}" />
 </head>
 <body>
+<div class="header">
+  <img th:src="logo.png" alt="Hospital Logo" class="logo">
+  <button class="logout"><a th:href="@{/logout}">Logout</a></button>
+</div>
+<div class="container">
+  <div class="sidebar">
+    <button class="active"><a>Profile</a></button>
+    <button ><a th:href="@{/patient/health_record}">Health Records</a></button>
+    <button><a th:href="@{/patient/appointment}">Appointments</a></button>
+    <button>Payments</button>
+  </div>
+
+
+
+  <div class="content">
+    <table>
+      <tr>
+        <th>Patient ID:</th>
+        <td th:text="${doctor.id}"></td>
+      </tr>
+      <tr>
+        <th>First Name:</th>
+        <td th:text="${doctor.doctor_fname}"></td>
+      </tr>
+      <tr>
+        <th>Last Name:</th>
+        <td th:text="${doctor.doctor_lname}"></td>
+      </tr>
+      <tr>
+        <th>Phone Number:</th>
+        <td th:text="${doctor.phoneNumber}"></td>
+      </tr>
+
+      <tr>
+        <th>Address:</th>
+        <td th:text="${doctor.address}"></td>
+      </tr>
+      <tr>
+        <th>Gender:</th>
+        <td th:text="${doctor.gender}"></td>
+      </tr>
+      <tr>
+        <th>Date of Birth:</th>
+        <td th:text="${#dates.format(doctor.dateOfBirth, 'yyyy-MM-dd')}"></td>
+      </tr>
+      <tr>
+        <th>Emergency Contact Name:</th>
+        <td th:text="${doctor.emergencyContactName}"></td>
+      </tr>
+      <tr>
+        <th>Emergency Contact Phone:</th>
+        <td th:text="${doctor.emergencyContactPhone}"></td>
+      </tr>
+    </table>
+
+  </div>
+
+
+</div>
+<script>
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      header.classList.toggle('active');
+    });
+  });
+</script>
+
 
 </body>
 </html>
