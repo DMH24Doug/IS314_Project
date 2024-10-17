@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style_v1.css}">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="header">
+<header>
     <img src="hospital-logo.png" alt="Hospital Logo" class="logo">
-    <div class="settings-dropdown">
-        <button class="settings-btn">Settings</button>
-        <div class="settings-menu">
-            <a th:href="@{/admin/settings}">Account Settings</a>
-            <a th:href="@{/logout}">Logout</a>
-        </div>
-    </div>
+    <button class="logout">Logout</button>
 </header>
 
 <div class="container">
@@ -31,7 +25,7 @@
     <!-- Content -->
     <div class="content">
         <h1>Admin Dashboard</h1>
-        <p>Welcome to the admin dashboard. Use the sidebar to navigate through different sections.</p>
+        <p>Welcome to the admin dashboard. Use the buttons on the sidebar to navigate through different sections.</p>
 
         <!-- Action Buttons -->
         <div class="form-group">
@@ -42,10 +36,14 @@
         <!-- Dashboard Information -->
         <div class="info-section">
             <h2>Overview</h2>
-            <p>An overview of the current system status including the number of patients and doctors, and upcoming appointments.</p>
+            <p>Here you can find an overview of the current system status, including the number of patients and doctors, upcoming appointments, and more.</p>
+            <!-- You can add more details or widgets here as needed -->
         </div>
     </div>
 </div>
 
+<script>
+    // Optional JavaScript for additional functionality
+</script>
 </body>
 </html>

@@ -62,14 +62,16 @@ public class AuthController {
     }
 
 //    //user registration page
-@GetMapping("/register")
-public String register(Model model) {
-    if (!model.containsAttribute("user")) {
-        model.addAttribute("user", new RegistrationDTO());
-    }
-    return "register";
-}
+    @GetMapping("/register")
+    public String register(Model model) {
+        //creates new user (if registration is successful)
+        RegistrationDTO user = new RegistrationDTO();
+        model.addAttribute("user", user);
+        return "register";
 
+    }
+
+    //post methods for registration page
     @PostMapping("/register/save")
     public String register(
             @Valid @ModelAttribute("user") RegistrationDTO user,
@@ -93,7 +95,6 @@ public String register(Model model) {
         }
 
         userService.saveUser(user);
-        redirectAttributes.addFlashAttribute("success", "Registration successful!");
         return "redirect:/patient/create?success";
     }
 
