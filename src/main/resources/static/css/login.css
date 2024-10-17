@@ -1,0 +1,229 @@
+/*login page style*/
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url("https://img.freepik.com/free-photo/blur-hospital-clinic-interior_74190-4981.jpg");
+    background-size: cover;
+}
+
+.loginContainer {
+    background-color: #f1f1f1;
+    width: 100%;
+    max-width: 400px; /* Restricts the width of the container */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.loginContainer div {
+    width: 100%; /* Makes the form take up full width */
+}
+
+.loginContainer h1 {
+    text-align: left;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds space between form elements */
+}
+
+form input, button {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+a {
+    text-align: left;
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #187c31;
+    width: 50%;
+    align-self: center;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #115715;
+
+}
+
+.register {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.register a{
+    text-decoration: none;
+
+}
+
+.register a:hover{
+    text-decoration: underline;
+
+}
+/*login logo*/
+#myHeader {
+    background: #f1f1f1;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%; /* Changed from 100vw to 100% */
+    display: flex;
+}
+
+#myHeader h3 {
+    align-content: space-around;
+    text-align: center;
+    padding: 10px;
+}
+
+#myLogo {
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    justify-content: left;
+    width: 85px;
+}
+
+/*TODO fix footer*/
+/* Footer */
+footer {
+    background: rgba(26, 69, 40, 0.13);
+    color: #fff;
+    width: 100%; /* Changed from 100vw to 100% */
+    padding: 20px;
+    position: relative;
+}
+
+.footerP1{
+    text-align: left;
+    font-weight: normal;
+    color: #040404;
+    padding-left: 100px;
+    font-size: 14px;
+}
+.footerIcon {
+    width: 14px; /* Set the size of the image */
+    height: 14px; /* Ensure it's a square */
+    vertical-align: middle; /* Align the icon with the text */
+}
+
+.footerIcon1 {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+
+}
+
+.tab-space {
+    display: inline-block;
+    width: 100px; /* Acts like a tab */
+}
+
+/* Separator between login and Google sign-in */
+.or-separator {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #888;
+    border-bottom: solid;
+}
+
+/* Google login button styling */
+.google-login {
+    background-color: #f1f1f1;
+    color: #db4437;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.google-login:hover {
+    background-color: #f1f1f1;
+    color: #8e1e17;
+}
+
+/* Styling for the additional options below the login button */
+.additional-options {
+    text-align: center;
+    margin-top: 20px;
+}
+.icon {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+
+}
+/*login top*/
+.login-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.login-top h2{
+    margin: 0;
+}
+.login-top p{
+    text-align: right;
+}
+
+/*error handling */
+/* Styling for input validation hints */
+.validation-hint {
+    font-size: 0.85em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+/* Styling for error messages */
+.error-message {
+    color: red; /* Red text for errors */
+    font-size: 0.9em;
+    display: none; /* Hidden by default */
+    margin-bottom: 10px;
+}
+
+/* Red border for invalid inputs */
+.error {
+    border: 2px solid red;
+}
+
+/* Valid input border */
+.valid {
+    border: 2px solid green;
+}
+
+/* Blue border on focus for better UX */
+input:focus {
+    border: 2px solid #007bff;
+    outline: none;
+}
+
+

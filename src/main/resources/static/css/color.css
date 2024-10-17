@@ -1,0 +1,98 @@
+/* Color Classes */
+
+.bg-primary {
+    background-color: #007bff; /* Primary Blue */
+}
+
+.bg-secondary {
+    background-color: #6c757d; /* Secondary Gray */
+}
+
+.bgCustom4 {
+    color: #1fba47; /* Success Green */
+}
+
+.bg-danger {
+    background-color: #dc3545; /* Danger Red */
+}
+
+.bg-warning {
+    background-color: #ffc107; /* Warning Yellow */
+}
+
+.bg-info {
+    background-color: rgba(153, 155, 165, 0.11); /* Info Cyan */
+}
+
+.bg-light {
+    background-color: #f8f9fa; /* Light Gray */
+}
+
+.bg-dark {
+    background-color: #343a40; /* Dark Gray */
+}
+
+.bg-white {
+    background-color: #ffffff; /* White */
+}
+
+.bg-black {
+    background-color: #000000; /* Black */
+}
+
+.bgCustom1{
+    background-color: rgba(106, 70, 38, 0.44);
+}
+
+.bgCustom2 {
+    background-color: rgba(163, 138, 55, 0.44);
+}
+.bgCustom3 {
+    background-color: rgba(24, 81, 18, 0.44);
+}
+
+/* Text Color Classes */
+
+.text-primary {
+    color: #007bff; /* Primary Blue */
+}
+
+.text-secondary {
+    color: #6c757d; /* Secondary Gray */
+}
+
+.text-success {
+    color: #28a745; /* Success Green */
+}
+
+.text-danger {
+    color: #dc3545; /* Danger Red */
+}
+
+.text-warning {
+    color: #ffc107; /* Warning Yellow */
+}
+
+.text-info {
+    color: #17a2b8; /* Info Cyan */
+}
+
+.text-light {
+    color: #f8f9fa; /* Light Gray */
+}
+
+.text-dark {
+    color: #343a40; /* Dark Gray */
+}
+
+.text-white {
+    color: #ffffff; /* White */
+}
+
+.text-black {
+    color: #000000; /* Black */
+}
+
+.text-brown {
+    color: #504d34;
+}

@@ -62,35 +62,33 @@ public class AuthController {
     }
 
 //    //user registration page
-    @GetMapping("/register")
-    public String register(Model model) {
-        //creates new user (if registration is successful)
-        RegistrationDTO user = new RegistrationDTO();
-        model.addAttribute("user", user);
-        return "register";
-
+@GetMapping("/register")
+public String register(Model model) {
+    if (!model.containsAttribute("user")) {
+        model.addAttribute("user", new RegistrationDTO());
     }
+    return "register";
+}
 
-    //post methods for registration page
     @PostMapping("/register/save")
-    public String register(@Valid @ModelAttribute("user") RegistrationDTO user,
-                           BindingResult result, RedirectAttributes redirectAttributes) {
-        // Find user by email (check if user already exists)
-        UserEntity existingUserEmail = userService.findByEmail(user.getEmail());
-        if(existingUserEmail != null && existingUserEmail.getEmail() != null && !existingUserEmail.getEmail().isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Email already in use.");
-            return "redirect:/register?fail";
-        }
+    public String register(
+            @Valid @ModelAttribute("user") RegistrationDTO user,
+            BindingResult result,
+            RedirectAttributes redirectAttributes) {
 
-        // Find user by username (check if user already exists)
-        UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
-        if(existingUserUsername != null && existingUserUsername.getName() != null && !existingUserUsername.getName().isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Username already in use.");
-            return "redirect:/register?fail";
-        }
-
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
+            redirectAttributes.addFlashAttribute("user", user); // Preserve input
+            return "redirect:/register";
+        }
+
+        // Check if email or username already exists
+        if (userService.findByEmail(user.getEmail()) != null) {
+            redirectAttributes.addFlashAttribute("message", "Email already in use.");
+            return "redirect:/register";
+        }
+        if (userService.findByUsername(user.getUsername()) != null) {
+            redirectAttributes.addFlashAttribute("message", "Username already in use.");
             return "redirect:/register";
         }
 
@@ -98,5 +96,33 @@ public class AuthController {
         redirectAttributes.addFlashAttribute("success", "Registration successful!");
         return "redirect:/patient/create?success";
     }
+
+
+
+    //updated pages
+
+    //maps to department
+    @GetMapping("/department")
+    public String department() {return "departments";}
+
+    //maps to about us
+    @GetMapping("/about")
+    public String about() {return "about";}
+
+    //maps to contact
+    @GetMapping("/contact")
+    public String contact() {return "contact";}
+
+    //maps to cardiology
+    @GetMapping("/cardiology")
+    public String cardiology() {return "cardiology";}
+
+    //maps to neurology
+    @GetMapping("/neurology")
+    public String neurology() {return "neurology";}
+
+    //maps to orthopaedics
+    @GetMapping("/orthopaedics")
+    public String orthopaedics() {return "orthopaedics";}
 
 }

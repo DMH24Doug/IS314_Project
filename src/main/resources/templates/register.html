@@ -3,68 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}">
+    <title>CWM Register Page</title>
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/scroller.css}">
 </head>
 <body>
-
-<div class="container">
-
-    <div th:if="${param.fail}" class="alert warning">
-        <span class="closebtn">&times;</span>
-        <strong>Invalid! </strong>Username or email already exists!
+<div class="loginContainer">
+    <div id="myHeader">
+        <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
     </div>
-    <!-- Main Content -->
-    <div class="content">
-        <h1>Register</h1>
 
-        <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">
-            <div class="form-group">
-                <label>Username:</label><br>
-                <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Username"
-                        th:field="*{username}">
-            </div>
-            <p th:if="${#fields.hasErrors('username')}" class="text-danger"></p>
-            <div class="form-group">
-                <label>Email:</label><br>
-                <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Email"
-                        th:field="*{email}">
-            </div>
-            <p th:if="${#fields.hasErrors('email')}" class="text-danger"></p>
-            <div class="form-group">
-                <label>Password:</label><br>
-                <input
-                        type="password"
-                        class="form-control"
-                        placeholder="Password"
-                        th:field="*{password}">
-            </div>
-            <div class="regbtn">
-                <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+    <div class="login-top">
+        <h2>User Register</h2>
+        <a th:href="@{/}">Back Home</a>
+    </div>
 
-            </div>
-                    <button type="submit">Register</button>
+    <div>
+        <form id="registrationForm" method="post" role="form" th:action="@{/register/save}" th:object="${user}" novalidate>
+
+            <!-- Username -->
+            <label for="userName">Username:</label>
+            <input type="text" id="userName" placeholder="Enter Username" th:field="*{username}" required>
+            <span class="error-message" th:if="${message == 'Username already in use.'}" th:text="${message}"></span>
+
+            <!-- Password -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter Password" th:field="*{password}" required>
+            <span class="error-message" th:if="${errors != null}" th:each="error : ${errors}" th:text="${error.defaultMessage}"></span>
+
+            <!-- Confirm Password -->
+            <label for="re_password">Confirm Password:</label>
+            <input type="password" id="re_password" placeholder="Re-enter Password" required>
+            <span class="error-message" id="re-password-error" style="display: none;">Passwords do not match.</span>
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter Email" th:field="*{email}" required>
+            <span class="error-message" th:if="${message == 'Email already in use.'}" th:text="${message}"></span>
+
+            <!-- Submit Button -->
+            <button type="submit" id="SubmitButton">Sign Up</button>
 
         </form>
+
     </div>
 </div>
-<script>
-    var close = document.getElementsByClassName("closebtn");
-    var i;
-
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function(){
-            var div = this.parentElement;
-            div.style.opacity = "0";
-            setTimeout(function(){ div.style.display = "none"; }, 600);
-        }
-    }
-</script>
+<script th:src="@{/js/validation_user_reg.js}"></script>
 </body>
 </html>

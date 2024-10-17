@@ -31,7 +31,8 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .requestMatchers("/admin/**").permitAll()
-                .requestMatchers("/chatbot/","/login/**", "/register", "/patient","/css/**", "/assets/**","/js/**")
+                .requestMatchers("/chatbot/","/login/**", "/register", "/patient","/css/**", "/assets/**","/js/**",
+                        "/department", "/about", "/contact", "/cardiology", "/neurology", "/orthopaedics")
                 .permitAll()
                 .and()
 

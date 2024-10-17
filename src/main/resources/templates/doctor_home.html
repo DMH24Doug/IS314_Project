@@ -2,28 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
-  <link rel="stylesheet" th:href="@{/css/style_v1.css}" />
+  <title>Doctor Profile</title>
+  <link rel="stylesheet" th:href="@{/css/style_v1.css}">
 </head>
 <body>
-<div class="header">
-  <img th:src="logo.png" alt="Hospital Logo" class="logo">
-  <button class="logout"><a th:href="@{/logout}">Logout</a></button>
-</div>
+<header class="header">
+  <img src="hospital-logo.png" alt="Hospital Logo" class="logo">
+  <div class="settings-dropdown">
+    <button class="settings-btn">Settings</button>
+    <div class="settings-menu">
+      <a th:href="@{/doctor/settings}">Account Settings</a>
+      <a th:href="@{/logout}">Logout</a>
+    </div>
+  </div>
+</header>
+
 <div class="container">
   <div class="sidebar">
     <button class="active"><a>Profile</a></button>
-    <button ><a th:href="@{/patient/health_record}">Health Records</a></button>
-    <button><a th:href="@{/patient/appointment}">Appointments</a></button>
+    <button><a th:href="@{/doctor/health_record}">Health Records</a></button>
+    <button><a th:href="@{/doctor/appointment}">Appointments</a></button>
     <button>Payments</button>
   </div>
 
-
-
   <div class="content">
-    <table>
+    <table class="profile-table">
       <tr>
-        <th>Patient ID:</th>
+        <th>Doctor ID:</th>
         <td th:text="${doctor.id}"></td>
       </tr>
       <tr>
@@ -38,7 +43,6 @@
         <th>Phone Number:</th>
         <td th:text="${doctor.phoneNumber}"></td>
       </tr>
-
       <tr>
         <th>Address:</th>
         <td th:text="${doctor.address}"></td>
@@ -60,21 +64,8 @@
         <td th:text="${doctor.emergencyContactPhone}"></td>
       </tr>
     </table>
-
   </div>
-
-
 </div>
-<script>
-  document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const content = header.nextElementSibling;
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
-      header.classList.toggle('active');
-    });
-  });
-</script>
-
 
 </body>
 </html>

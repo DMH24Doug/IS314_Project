@@ -1,164 +1,775 @@
-body{
+/* Global box-sizing to include padding and border in width calculations */
+* {
+    box-sizing: border-box;
+
+}
+
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Jost', sans-serif;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    width: 100%; /* Changed from 100vw to 100% to prevent overflow */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 body {
+    background: url("https://img.freepik.com/free-photo/blur-hospital-clinic-interior_74190-4981.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0; /* Ensure no extra padding on the body */
     margin: 0;
-    padding: 0;
+}
+
+/*containers*/
+div.container {
+    background: rgba(255, 255, 255, 0.94);
+    color: #000000;
+    text-align: center;
+    padding: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%; /* Ensure container stays within the viewport */
+}
+
+div.container div {
+    width: 30%;
+    height: auto;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: left;
+    padding: 20px;
+
+}
+.secondaryContainer{
+    background: rgba(255, 255, 255, 0.94);
+    color: #000000;
+    text-align: center;
+    padding: 50px;
+    max-width: 100%; /* Ensure container stays within the viewport */
+}
+.secondaryContainer div {
+    width: 30%;
+    height: auto;
+    display: inline-block;
+    margin: 10px;
+    background-color: transparent;
+    text-align: center;
+    padding: 20px;
+}
+.secondaryContainer div h3 {
+    text-align: center;
+    font-weight: bold;
+    color: #a35e52;
+}
+.secondaryContainer div p {
+    text-align: center;
+    color: #6c757d;
+    font-size: 15px;
+}
+.secondaryContainerImg {
+    width:80px;
+    height:80px;
+    vertical-align: middle;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    background-color: #a35e52;
+    padding: 5px;
+}
+
+div.container div button {
+    border: none;
+    background-color: rgba(26, 69, 40, 0.53);
+    color: #ffffff;
+    padding: 10px;
+
+}
+div.container div button:hover {
+    background-color: rgba(26, 69, 40, 0.29);
+}
+
+div.header {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    width: 100%; /* Changed from 100vw to 100% */
+}
+
+div.header h1, div.header h2 {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0; /* Remove default margin */
+    padding: 10px;
+}
+
+div.myContainer {
+    background: rgba(184, 148, 20, 0.26);
+    color: #fff;
+    text-align: left;
+    font-weight: normal;
+    width: 100vw; /* Changed from 100vw to 100% */
+    height: 8vw;
+    overflow: auto;
+    font-size: 2vw;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding-left: 130px;
     align-items: center;
-    min-height: 100vh;
-    font-family: 'Jost', sans-serif;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 
 
-nav {
+div.bookContainer {
+    background: #1a4528;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    width: 100%; /* Changed from 100vw to 100% */
+    height: 8vw;
+    overflow: auto;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2),  0 -4px 10px rgba(0, 0, 0, 0.2);
+    position: relative; /* Ensure z-index applies correctly */
+    z-index: 1; /* Bring the element to the front */
+}
+div.bookContainer span {
+    text-align: left; /* Text stays on the left */
+}
+
+div.bookContainer a {
+    color: #fff;
+    text-align: right; /* Link stays on the right */
+    font-size: 14px; /* Adjust the size of the link if needed */
+}
+
+div.imageContainer {
+    position: relative;
+    height: 400px;
+    width: 100%; /* Changed from 100vw to 100% */
+    background-size: cover;
+    background-position: center center;
+    transition: background-image 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-size: 2em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+div.imageContainer h1 {
+    position: relative;
+    z-index: 2;
+}
+/*book appointment styles*/
+/*Online Booking Container*/
+.appointmentContainer{
+    display: flex;
+    flex-direction: column; /* Stacks content vertically for small screens */
+    width: 100%; /* Changed from 100vw to 100% */
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+.date-picker {
+    position: relative;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    padding: 10px 0;
+    max-width: 320px;
+    height: 60px;
+    background-color: #f1f1f1;
+    margin: 30px auto;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+
+    cursor: pointer;
+    user-select: none;
+}
+.date-picker .selected-date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+}
+.date-picker .dates{
+    display: none;
+}
+
+/* Navigation */
+nav {
+    background: rgb(255, 255, 255);
+    color: #fff;
+    text-align: right;
+    font-weight: bold;
+    width: 100%; /* Changed from 100vw to 100% */
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 nav ul {
     list-style-type: none;
-    margin: 0;
-    margin-top:20px;
     padding: 0;
-    display: flex;
-    justify-content: right;
+    margin: 0;
 }
 
 nav ul li {
-    display: inline;
-    padding: 10px 20px;
-}
-nav h1 {
-    color: white;
-    float: left;
-    margin: 0;
-    margin-top: 25px;
-    margin-left: 10px;
+    display: inline-block;
+    position: relative;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
+    padding: 10px;
+    display: block;
+    color: #040404;
 }
 
 nav ul li a:hover {
-    color: #ddd;
+    background: rgba(67, 67, 67, 0.16);
+    color: rgba(18, 10, 10, 0.94);
+    font-weight: bold;
 }
 
-
-.main{
-    width: 350px;
-    height: 500px;
-    background: red;
-    overflow: hidden;
-    background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
-    border-radius: 10px;
-    box-shadow: 5px 20px 50px #000;
-}
-#chk{
-    display: none;
-}
-.signup{
+/* Footer */
+footer {
+    background: rgba(26, 69, 40, 0.13);
+    color: #fff;
+    width: 100%; /* Changed from 100vw to 100% */
+    padding: 20px;
     position: relative;
-    width:100%;
-    height: 100%;
+    clear: both; /* Ensure it stays below floated content */
 }
-label{
+
+.footerP1{
+    text-align: left;
+    font-weight: normal;
+    color: #040404;
+    padding-left: 100px;
+    font-size: 14px;
+}
+.footerIcon {
+    width: 14px; /* Set the size of the image */
+    height: 14px; /* Ensure it's a square */
+    vertical-align: middle; /* Align the icon with the text */
+}
+
+.footerIcon1 {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+
+}
+
+.tab-space {
+    display: inline-block;
+    width: 100px; /* Acts like a tab */
+}
+
+/* Header */
+#myHeader {
+    background: rgba(26, 69, 40, 0.69);
     color: #fff;
-    font-size: 2.3em;
-    justify-content: center;
-    display: flex;
-    margin: 60px;
+    text-align: left;
     font-weight: bold;
-    cursor: pointer;
-    transition: .5s ease-in-out;
-}
-input{
-    width: 60%;
-    height: 20px;
-    background: #e0dede;
-    justify-content: center;
+    text-transform: uppercase;
+    width: 100%; /* Changed from 100vw to 100% */
     display: flex;
-    margin: 20px auto;
+}
+
+#myHeader h3 {
+    align-content: space-around;
+    text-align: center;
     padding: 10px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
 }
-button{
-    width: 60%;
-    height: 40px;
-    margin: 10px auto;
-    justify-content: center;
-    display: block;
+
+#myLogo {
+    background: rgba(0, 0, 0, 0);
     color: #fff;
-    background: #573b8a;
-    font-size: 1em;
+    justify-content: left;
+    width: 85px;
+    height: auto;
+}
+
+/* Dropdown */
+#myAccButton:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    z-index: 1;
+}
+
+.dropdown-content ul li {
+    display: block;
+}
+
+.dropdown-content ul li a {
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content ul li a:hover {
+    background-color: #f1f1f1;
+    color: #1a4528;
+}
+
+/* Active state */
+.active {
+    background-color: rgba(5, 4, 4, 0.42);
+    color: #ffffff;
     font-weight: bold;
-    margin-top: 20px;
-    outline: none;
+}
+
+.img_about {
+    float: left;
+    width: 300px;
+    height: 150px;
+}
+
+.about_p {
+    text-align: left;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* Contact Section */
+.contactContainer {
+    display: flex;
+    flex-direction: column; /* Stacks content vertically for small screens */
+    width: 100%; /* Changed from 100vw to 100% */
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .contactContainer {
+        flex-direction: row; /* Side-by-side layout for wider screens */
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+.map-container {
+    flex: 1;
+}
+
+.contactInfo {
+    flex: 1;
+    max-width: 600px;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.contactForm-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contactForm-row input,
+.contactForm-row textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.contactForm-row input[name="fname"],
+.contactForm-row input[name="lname"] {
+    width: 49%;
+}
+
+.contactForm-button {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contactForm-button button {
+    padding: 10px 15px;
+    background-color: #108740;
+    color: white;
     border: none;
-    border-radius: 5px;
-    transition: .2s ease-in;
+    /*border-radius: 4px;*/
+    font-size: 16px;
     cursor: pointer;
 }
-button:hover{
-    background: #6d44b8;
-}
-.login{
-    height: 460px;
-    background: #eee;
-    border-radius: 60% / 10%;
-    transform: translateY(-180px);
-    transition: .8s ease-in-out;
-}
-.login label{
-    color: #573b8a;
-    transform: scale(.6);
+
+.contactForm-button button:hover {
+    background-color: #0d5a2e;
 }
 
-.signin
-{
-    color:red;
-}
-.signin a:hover
-{
-    color: #ddd;
-}
-.logo{
-
-    height: 80px;
-    width:100px;
-    margin-left:10px;
-    float:left;
+iframe {
+    width: 100%;
+    height: 600px;
 }
 
-#chk:checked ~ .login{
-    transform: translateY(-500px);
+/*booking page styles*/
+div.bookingContainer {
+    background: rgba(255, 255, 255, 0.94);
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%; /* Ensure container stays within the viewport */
+
 }
-#chk:checked ~ .login label{
-    transform: scale(1);
+
+div.bookingContainer div {
+    width: 25%;
+    height: auto;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding-bottom: 20px;
+
 }
-#chk:checked ~ .signup label{
-    transform: scale(.6);
+div.bookingContainer div h1 {
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    font-weight: normal;
 }
+div.bookingContainer div img {
+    width: 100%;
+    height: 200px;
+}
+
+div.bookingContainer div button {
+    border: none;
+    background-color: #1a4528;
+    color: #ffffff;
+    padding: 10px;
+
+}
+div.bookingContainer div button:hover {
+    background-color: rgba(26, 69, 40, 0.29);
+}
+
+/*department container*/
+.departmentContainer {
+    background: rgba(255, 255, 255, 0.94);
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%; /* Ensure container stays within the viewport */
+
+}
+
+.departmentContainer div {
+    width: 23%;
+    height: 300px;
+    display: inline-block;
+    margin: 10px;
+    text-align: left;
+    padding-bottom: 20px;
+
+}
+.departmentContainer div h1 {
+    text-align: left;
+    font-size: 18px;
+    padding: 10px 0;
+    margin: 0;
+    font-weight: normal;
+}
+
+.departmentContainer div p {
+    text-align: left;
+    font-size: 15px;
+}
+.departmentContainer div img {
+    width: 100%;
+    height: 200px;
+}
+.departmentContainer a{
+    text-align: right;
+    text-decoration: none;
+    color: #1a4528;
+    font-size: 13px;
+}
+.departmentContainer a:hover{
+    text-decoration: underline;
+    color: #25683c;
+}
+/*Patient DashBoard Styles*/
+.contentDiv {
+    display: none; /* Hidden by default */
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Make it responsive */
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Display contentDiv when it's active */
+.contentDiv.active {
+    display: block;
+
+}
+.contentSection {
+    display: flex;
+    min-height: calc(100vh - 100px); /* Adjust based on footer height */
+    width: 100%;
+}
+
+.patientAsideMenu {
+    width: 20%;
+    background-color: rgba(26, 69, 40, 0.69);
+    height: 100vh;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.patientAsideMenu .button {
+    width: 100%;
+    margin: 10px 0;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.dashboardContainer {
+
+    flex-grow: 1; /* Take the remaining space */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.dashboardWidget {
+    width: 30%;
+    background: rgba(255, 255, 255, 0.94);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboardWidget h2 {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.dashboardWidget p {
+    margin: 15px 0;
+}
+/*Registration Form style */
+/* Registration Container */
+.registrationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full screen height */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Registration Form */
+.registrationForm {
+    width: 100%;
+    max-width: 800px; /* Responsive width */
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Row for two-column layout */
+.formRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Form Group */
+.formGroup {
+    flex: 1; /* Allow groups to grow equally */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.formGroup label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #1a4528;
+}
+
+/* Inputs and Textareas */
+.formGroup input,
+.formGroup textarea {
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+/* Focus State */
+.formGroup input:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: #1a4528;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(26, 69, 40, 0.5);
+}
+/* Styling for Select Dropdown */
+.formGroup select {
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    appearance: none; /* Removes default browser styling */
+    -webkit-appearance: none; /* Safari browser */
+    -moz-appearance: none; /* Firefox browser */
+    cursor: pointer;
+}
+
+/* Add dropdown arrow */
+.formGroup select:after {
+    content: '▼'; /* Unicode arrow */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Prevents arrow from blocking clicks */
+}
+
+/* Focus state for select dropdown */
+.formGroup select:focus {
+    outline: none;
+    border-color: #1a4528;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(26, 69, 40, 0.5);
+}
+
+/* Submit Button */
+.buttonGroup button {
+    width: 100%; /* Full-width button */
+    padding: 15px;
+    font-size: 18px;
+    background-color: #1a4528;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.buttonGroup button:hover {
+    background-color: #0d5a2e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .formRow {
+        flex-direction: column; /* Stack form rows on smaller screens */
+    }
+}
+/*button styles*/
+.button {
+    display: inline-block;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #1a4528;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgba(26, 69, 40, 0.29);
+}
+
+.buttonAppointment {
+    display: inline-block;
+    padding: 10px;
+    font-size: 25px;
+    background-color: rgba(26, 69, 40, 0);
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border:solid 1px rgba(255, 255, 255, 0.94);
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+}
+
+.buttonAppointment:hover {
+    background-color: rgba(162, 230, 182, 0.16);
+}
+
+.buttonReadMore {
+    border: none;
+    display: inline-block;
+    background-color: rgba(26, 69, 40, 0.53);
+    color: #ffffff;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.5s, transform 0.3s;
+    transition-delay: 0s; /* No delay by default */
+
+}
+.buttonReadMore:hover {
+    background-color: rgba(26, 69, 40, 0.29);
+    transform: scale(1.1); /* Slightly increase size */
+    transition-delay: 0.1s; /* Add delay before hover effect starts */
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 10px; /* Distance from the bottom of the screen */
+    right: 11px;   /* Distance from the left of the screen */
+    background-color: #dccc22; /* Button color */
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+    text-align: center; /* Center text in the link */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+.floating-btn:hover {
+    background-color: rgb(129, 175, 143); /* Darken button on hover */
+}
+
+

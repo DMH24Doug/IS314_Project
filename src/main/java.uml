@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/dougl/OneDrive/Documents/School/Semester 2/IS314/HRMS_DRAFTS/Prototype_v3/src/main/java</OriginalElement>
+  <nodes>
+    <node x="1480.5" y="166.0">com.s11160663.prototype_v3.Model.Roles</node>
+    <node x="1094.0" y="-14.0">com.s11160663.prototype_v3.Model.PrescriptionEntity</node>
+    <node x="1431.0" y="966.0">com.s11160663.prototype_v3.Service.Implementation.DoctorServiceImpl</node>
+    <node x="162.0" y="326.0">com.s11160663.prototype_v3.Repository.UserRepository</node>
+    <node x="491.0" y="726.0">com.s11160663.prototype_v3.Security.CustomAuthSuccessHandler</node>
+    <node x="2017.0" y="966.0">com.s11160663.prototype_v3.Controller.PrescriptionController</node>
+    <node x="-136.0" y="386.0">com.s11160663.prototype_v3.Model.ScheduleEntity</node>
+    <node x="1498.5" y="386.0">com.s11160663.prototype_v3.DTO.RegistrationDTO</node>
+    <node x="1917.5" y="906.0">com.s11160663.prototype_v3.Security.SecurityUtil</node>
+    <node x="736.5" y="786.0">com.s11160663.prototype_v3.Controller.PatientController</node>
+    <node x="2021.0" y="386.0">com.s11160663.prototype_v3.Service.Implementation.ScheduleServiceImpl</node>
+    <node x="1766.0" y="966.0">com.s11160663.prototype_v3.Mapper.PrescritpionMapper</node>
+    <node x="574.0" y="386.0">com.s11160663.prototype_v3.Repository.PatientRepository</node>
+    <node x="278.0" y="386.0">com.s11160663.prototype_v3.DTO.PrescriptionDTO</node>
+    <node x="2037.0" y="166.0">com.s11160663.prototype_v3.Service.ScheduleService</node>
+    <node x="874.5" y="386.0">com.s11160663.prototype_v3.Service.UserService</node>
+    <node x="1998.0" y="726.0">com.s11160663.prototype_v3.DTO.PatientDTO</node>
+    <node x="1385.5" y="786.0">com.s11160663.prototype_v3.Controller.AuthController</node>
+    <node x="1113.5" y="166.0">com.s11160663.prototype_v3.Model.PatientEntity</node>
+    <node x="1552.5" y="106.0">com.s11160663.prototype_v3.Controller.ChatBotController</node>
+    <node x="-124.0" y="786.0">com.s11160663.prototype_v3.Service.Implementation.RolesServiceImpl</node>
+    <node x="1614.0" y="906.0">com.s11160663.prototype_v3.Repository.PrescriptionRepository</node>
+    <node x="1538.5" y="726.0">com.s11160663.prototype_v3.Controller.AdminController</node>
+    <node x="1224.5" y="906.0">com.s11160663.prototype_v3.Repository.ScheduleRepository</node>
+    <node x="1214.5" y="726.0">com.s11160663.prototype_v3.Repository.DoctorRepository</node>
+    <node x="408.5" y="326.0">com.s11160663.prototype_v3.DTO.ScheduleDTO</node>
+    <node x="1126.5" y="966.0">com.s11160663.prototype_v3.Mapper.DoctorMapper</node>
+    <node x="1210.5" y="386.0">com.s11160663.prototype_v3.Service.Implementation.PrescriptionServiceImpl</node>
+    <node x="1050.0" y="786.0">com.s11160663.prototype_v3.Service.Implementation.PatientServiceImpl</node>
+    <node x="1040.0" y="906.0">com.s11160663.prototype_v3.Exception.Exceptions</node>
+    <node x="1226.5" y="106.0">com.s11160663.prototype_v3.Service.PrescriptionService</node>
+    <node x="898.5" y="726.0">com.s11160663.prototype_v3.Service.Implementation.UserServiceImpl</node>
+    <node x="896.5" y="966.0">com.s11160663.prototype_v3.Mapper.ScheduleMapper</node>
+    <node x="1402.0" y="326.0">com.s11160663.prototype_v3.Model.UserEntity</node>
+    <node x="505.0" y="966.0">com.s11160663.prototype_v3.Security.SecurityConfig</node>
+    <node x="1747.0" y="326.0">com.s11160663.prototype_v3.Service.DoctorService</node>
+    <node x="72.0" y="386.0">com.s11160663.prototype_v3.Service.RolesService</node>
+    <node x="731.0" y="906.0">com.s11160663.prototype_v3.PrototypeV3Application</node>
+    <node x="-36.0" y="326.0">com.s11160663.prototype_v3.Repository.RoleRepository</node>
+    <node x="1006.0" y="326.0">com.s11160663.prototype_v3.Service.PatientService</node>
+    <node x="38.0" y="726.0">com.s11160663.prototype_v3.Security.CustomUserDetailsService</node>
+    <node x="390.0" y="786.0">com.s11160663.prototype_v3.Initializer.DataInitializer</node>
+    <node x="1553.0" y="-14.0">com.s11160663.prototype_v3.ChatBot.ChatBotResponse</node>
+    <node x="2094.0" y="786.0">com.s11160663.prototype_v3.Model.DoctorEntity</node>
+    <node x="366.0" y="906.0">com.s11160663.prototype_v3.Mapper.PatientMapper</node>
+    <node x="1898.5" y="786.0">com.s11160663.prototype_v3.DTO.DoctorDTO</node>
+    <node x="1657.5" y="786.0">com.s11160663.prototype_v3.Controller.DoctorController</node>
+    <node x="239.5" y="966.0">com.s11160663.prototype_v3.ChatBot.ChatBotRequest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.DoctorServiceImpl" target="com.s11160663.prototype_v3.Repository.DoctorRepository" relationship="TO_ONE">
+      <point x="-64.0" y="-14.0" />
+      <point x="1463.0" y="880.0" />
+      <point x="1307.0" y="880.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.UserServiceImpl" target="com.s11160663.prototype_v3.Model.PatientEntity" relationship="CREATE">
+      <point x="59.0" y="-14.0" />
+      <point x="1046.0" y="700.0" />
+      <point x="1187.0" y="700.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.DoctorEntity" target="com.s11160663.prototype_v3.Model.UserEntity" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="2167.0" y="700.0" />
+      <point x="2067.0" y="700.0" />
+      <point x="2067.0" y="440.0" />
+      <point x="1987.0" y="440.0" />
+      <point x="1987.0" y="260.0" />
+      <point x="1467.0" y="260.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.UserServiceImpl" target="com.s11160663.prototype_v3.Service.UserService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="987.0" y="640.0" />
+      <point x="983.25" y="640.0" />
+      <point x="36.25" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.AdminController" target="com.s11160663.prototype_v3.DTO.RegistrationDTO" relationship="CREATE">
+      <point x="44.25" y="-14.0" />
+      <point x="1671.25" y="660.0" />
+      <point x="1587.0" y="660.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.RolesServiceImpl" target="com.s11160663.prototype_v3.Service.RolesService" relationship="REALIZATION">
+      <point x="-45.5" y="-14.0" />
+      <point x="-78.5" y="680.0" />
+      <point x="109.5" y="680.0" />
+      <point x="-37.5" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.RolesServiceImpl" target="com.s11160663.prototype_v3.Repository.RoleRepository" relationship="TO_ONE">
+      <point x="45.5" y="-14.0" />
+      <point x="12.5" y="700.0" />
+      <point x="47.0" y="700.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.DTO.ScheduleDTO" target="com.s11160663.prototype_v3.Model.PatientEntity" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="487.0" y="300.0" />
+      <point x="367.0" y="300.0" />
+      <point x="367.0" y="140.0" />
+      <point x="1187.0" y="140.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.UserServiceImpl" target="com.s11160663.prototype_v3.Repository.UserRepository" relationship="TO_ONE">
+      <point x="-59.0" y="-14.0" />
+      <point x="928.0" y="640.0" />
+      <point x="427.0" y="640.0" />
+      <point x="427.0" y="600.0" />
+      <point x="247.0" y="600.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.AuthController" target="com.s11160663.prototype_v3.DTO.RegistrationDTO" relationship="CREATE">
+      <point x="40.75" y="-14.0" />
+      <point x="1507.75" y="660.0" />
+      <point x="1587.0" y="660.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.UserServiceImpl" target="com.s11160663.prototype_v3.Repository.RoleRepository" relationship="TO_ONE">
+      <point x="-59.0" y="-14.0" />
+      <point x="928.0" y="640.0" />
+      <point x="427.0" y="640.0" />
+      <point x="427.0" y="620.0" />
+      <point x="47.0" y="620.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.PatientController" target="com.s11160663.prototype_v3.Service.PatientService" relationship="TO_ONE">
+      <point x="45.25" y="-14.0" />
+      <point x="872.25" y="760.0" />
+      <point x="867.0" y="760.0" />
+      <point x="867.0" y="560.0" />
+      <point x="1047.0" y="560.0" />
+      <point x="1047.0" y="380.0" />
+      <point x="1046.5" y="380.0" />
+      <point x="-40.5" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.ScheduleServiceImpl" target="com.s11160663.prototype_v3.Service.ScheduleService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.UserServiceImpl" target="com.s11160663.prototype_v3.Model.UserEntity" relationship="CREATE">
+      <point x="59.0" y="-14.0" />
+      <point x="1046.0" y="700.0" />
+      <point x="1187.0" y="700.0" />
+      <point x="1187.0" y="660.0" />
+      <point x="1467.0" y="660.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.AuthController" target="com.s11160663.prototype_v3.Service.UserService" relationship="TO_ONE">
+      <point x="-40.75" y="-14.0" />
+      <point x="1426.25" y="580.0" />
+      <point x="907.0" y="580.0" />
+      <point x="907.0" y="440.0" />
+      <point x="910.75" y="440.0" />
+      <point x="-36.25" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.UserEntity" target="com.s11160663.prototype_v3.Model.Roles" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="1467.0" y="280.0" />
+      <point x="1447.0" y="280.0" />
+      <point x="1447.0" y="240.0" />
+      <point x="1527.0" y="240.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.Roles" target="com.s11160663.prototype_v3.Model.UserEntity" relationship="TO_MANY">
+      <point x="0.0" y="14.0" />
+      <point x="1527.0" y="220.0" />
+      <point x="1487.0" y="220.0" />
+      <point x="1487.0" y="300.0" />
+      <point x="1467.0" y="300.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Initializer.DataInitializer" target="com.s11160663.prototype_v3.Service.RolesService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="467.0" y="560.0" />
+      <point x="184.5" y="560.0" />
+      <point x="37.5" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.AdminController" target="com.s11160663.prototype_v3.Service.DoctorService" relationship="TO_ONE">
+      <point x="-44.25" y="-14.0" />
+      <point x="1582.75" y="680.0" />
+      <point x="1047.0" y="680.0" />
+      <point x="1047.0" y="600.0" />
+      <point x="1747.0" y="600.0" />
+      <point x="1747.0" y="420.0" />
+      <point x="1787.0" y="420.0" />
+      <point x="-40.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Security.SecurityConfig" target="com.s11160663.prototype_v3.Security.CustomAuthSuccessHandler" relationship="CREATE">
+      <point x="41.0" y="-14.0" />
+      <point x="628.0" y="940.0" />
+      <point x="627.0" y="940.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Initializer.DataInitializer" target="com.s11160663.prototype_v3.Repository.UserRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="467.0" y="540.0" />
+      <point x="247.0" y="540.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.AdminController" target="com.s11160663.prototype_v3.Service.UserService" relationship="TO_ONE">
+      <point x="-44.25" y="-14.0" />
+      <point x="1582.75" y="680.0" />
+      <point x="1047.0" y="680.0" />
+      <point x="1047.0" y="620.0" />
+      <point x="907.0" y="620.0" />
+      <point x="907.0" y="440.0" />
+      <point x="910.75" y="440.0" />
+      <point x="-36.25" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.DoctorServiceImpl" target="com.s11160663.prototype_v3.Service.DoctorService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1527.0" y="860.0" />
+      <point x="1867.0" y="860.0" />
+      <point x="40.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.DoctorController" target="com.s11160663.prototype_v3.Service.DoctorService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1747.0" y="420.0" />
+      <point x="1787.0" y="420.0" />
+      <point x="-40.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.UserEntity" target="com.s11160663.prototype_v3.Model.PatientEntity" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1467.0" y="280.0" />
+      <point x="1447.0" y="280.0" />
+      <point x="1447.0" y="260.0" />
+      <point x="367.0" y="260.0" />
+      <point x="367.0" y="140.0" />
+      <point x="1187.0" y="140.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.PatientEntity" target="com.s11160663.prototype_v3.Model.UserEntity" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1187.0" y="80.0" />
+      <point x="1447.0" y="80.0" />
+      <point x="1447.0" y="220.0" />
+      <point x="1487.0" y="220.0" />
+      <point x="1487.0" y="300.0" />
+      <point x="1467.0" y="300.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Security.CustomUserDetailsService" target="com.s11160663.prototype_v3.Repository.UserRepository" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="167.0" y="680.0" />
+      <point x="247.0" y="680.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Security.SecurityConfig" target="com.s11160663.prototype_v3.Security.CustomUserDetailsService" relationship="TO_ONE">
+      <point x="-41.0" y="-14.0" />
+      <point x="546.0" y="880.0" />
+      <point x="327.0" y="880.0" />
+      <point x="327.0" y="700.0" />
+      <point x="167.0" y="700.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.DoctorServiceImpl" target="com.s11160663.prototype_v3.Model.DoctorEntity" relationship="CREATE">
+      <point x="64.0" y="-14.0" />
+      <point x="1591.0" y="880.0" />
+      <point x="2167.0" y="880.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Initializer.DataInitializer" target="com.s11160663.prototype_v3.Service.UserService" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="467.0" y="520.0" />
+      <point x="907.0" y="520.0" />
+      <point x="907.0" y="440.0" />
+      <point x="910.75" y="440.0" />
+      <point x="-36.25" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.PatientServiceImpl" target="com.s11160663.prototype_v3.Repository.UserRepository" relationship="TO_ONE">
+      <point x="-48.5" y="-14.0" />
+      <point x="1098.5" y="660.0" />
+      <point x="667.0" y="660.0" />
+      <point x="667.0" y="500.0" />
+      <point x="247.0" y="500.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.PatientEntity" target="com.s11160663.prototype_v3.Model.PrescriptionEntity" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.PrescriptionEntity" target="com.s11160663.prototype_v3.Model.PatientEntity" relationship="TO_MANY">
+      <point x="0.0" y="14.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.PatientController" target="com.s11160663.prototype_v3.Service.UserService" relationship="TO_ONE">
+      <point x="45.25" y="-14.0" />
+      <point x="872.25" y="760.0" />
+      <point x="867.0" y="760.0" />
+      <point x="867.0" y="540.0" />
+      <point x="907.0" y="540.0" />
+      <point x="907.0" y="440.0" />
+      <point x="910.75" y="440.0" />
+      <point x="-36.25" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.DoctorServiceImpl" target="com.s11160663.prototype_v3.Repository.UserRepository" relationship="TO_ONE">
+      <point x="-64.0" y="-14.0" />
+      <point x="1463.0" y="880.0" />
+      <point x="1307.0" y="880.0" />
+      <point x="1307.0" y="860.0" />
+      <point x="367.0" y="860.0" />
+      <point x="367.0" y="680.0" />
+      <point x="247.0" y="680.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.ChatBotController" target="com.s11160663.prototype_v3.ChatBot.ChatBotResponse" relationship="CREATE">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Model.ScheduleEntity" target="com.s11160663.prototype_v3.Model.PatientEntity" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="-53.0" y="300.0" />
+      <point x="367.0" y="300.0" />
+      <point x="367.0" y="140.0" />
+      <point x="1187.0" y="140.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.UserServiceImpl" target="com.s11160663.prototype_v3.Repository.PatientRepository" relationship="TO_ONE">
+      <point x="-59.0" y="-14.0" />
+      <point x="928.0" y="640.0" />
+      <point x="427.0" y="640.0" />
+      <point x="427.0" y="480.0" />
+      <point x="667.0" y="480.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.PatientServiceImpl" target="com.s11160663.prototype_v3.Repository.PatientRepository" relationship="TO_ONE">
+      <point x="-48.5" y="-14.0" />
+      <point x="1098.5" y="660.0" />
+      <point x="667.0" y="660.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.PrescriptionServiceImpl" target="com.s11160663.prototype_v3.Service.PrescriptionService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.DTO.PatientDTO" target="com.s11160663.prototype_v3.Model.UserEntity" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="2067.0" y="440.0" />
+      <point x="1987.0" y="440.0" />
+      <point x="1987.0" y="260.0" />
+      <point x="1467.0" y="260.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.DTO.PrescriptionDTO" target="com.s11160663.prototype_v3.Model.PatientEntity" relationship="TO_MANY">
+      <point x="0.0" y="-14.0" />
+      <point x="367.0" y="140.0" />
+      <point x="1187.0" y="140.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.AdminController" target="com.s11160663.prototype_v3.Service.PatientService" relationship="TO_ONE">
+      <point x="-44.25" y="-14.0" />
+      <point x="1582.75" y="680.0" />
+      <point x="1047.0" y="680.0" />
+      <point x="1047.0" y="380.0" />
+      <point x="1046.5" y="380.0" />
+      <point x="-40.5" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.PatientController" target="com.s11160663.prototype_v3.Repository.PatientRepository" relationship="TO_ONE">
+      <point x="45.25" y="-14.0" />
+      <point x="872.25" y="760.0" />
+      <point x="867.0" y="760.0" />
+      <point x="867.0" y="440.0" />
+      <point x="667.0" y="440.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.DTO.DoctorDTO" target="com.s11160663.prototype_v3.Model.UserEntity" relationship="TO_ONE">
+      <point x="0.0" y="-14.0" />
+      <point x="1967.0" y="700.0" />
+      <point x="2067.0" y="700.0" />
+      <point x="2067.0" y="440.0" />
+      <point x="1987.0" y="440.0" />
+      <point x="1987.0" y="260.0" />
+      <point x="1467.0" y="260.0" />
+      <point x="0.0" y="-14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.PatientController" target="com.s11160663.prototype_v3.Model.PatientEntity" relationship="CREATE">
+      <point x="-45.25" y="-14.0" />
+      <point x="781.75" y="620.0" />
+      <point x="787.0" y="620.0" />
+      <point x="787.0" y="300.0" />
+      <point x="1187.0" y="300.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Service.Implementation.PatientServiceImpl" target="com.s11160663.prototype_v3.Service.PatientService" relationship="REALIZATION">
+      <point x="48.5" y="-14.0" />
+      <point x="1195.5" y="640.0" />
+      <point x="1127.5" y="640.0" />
+      <point x="40.5" y="14.0" />
+    </edge>
+    <edge source="com.s11160663.prototype_v3.Controller.PatientController" target="com.s11160663.prototype_v3.Repository.UserRepository" relationship="TO_ONE">
+      <point x="45.25" y="-14.0" />
+      <point x="872.25" y="760.0" />
+      <point x="867.0" y="760.0" />
+      <point x="867.0" y="460.0" />
+      <point x="247.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.456594323873122" showDependencies="true" x="932.6773235831806" y="735.1321389396714" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

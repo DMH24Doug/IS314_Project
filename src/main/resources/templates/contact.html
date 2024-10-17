@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWM Contact Page</title>
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/scroller.css}">
+</head>
+<body>
+<header>
+    <div id="myHeader">
+        <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+        <h3 >CWM HEALTH MEDICAL CENTER</h3>
+    </div>
+</header>
+<section>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li ><a th:href="@{/department}">Departments</a></li>
+            <li><a th:href="@{/about}">About Us</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/login}">Sign In</a></li>
+        </ul>
+    </nav>
+
+    <div class="myContainer">
+        <h1>Get in touch</h1>
+    </div>
+
+    <div class="contactContainer">
+
+        <div class="map-container">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3791.6372957360268!2d178.42945536745918!3d-18.134533230914162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6e1bde8223a0e1df%3A0x521b4da6c8fc4dac!2sColonial%20War%20Memorial%20Hospital!5e0!3m2!1sen!2sfj!4v1727997871631!5m2!1sen!2sfj"
+                    width="600"
+                    height="500"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+
+            </iframe>
+        </div>
+        <div class="contactInfo" >
+            <h1>Visit Us</h1>
+
+            <p>
+                123 Health Management Street<br>
+                Waimanu Rd, Suva<br>
+                Tel: 987-654-3210<br>
+                Fax: 987-654-3210<br>
+                Email: info@cwmhealth.org<br>
+            </p>
+            <form class="contactForm">
+                <div class="contactForm-row">
+                    <input type="text" name="fname" placeholder="First Name" required>
+                    <input type="text" name="lname" placeholder="Last Name" required>
+                </div>
+                <div class="contactForm-row">
+                    <input type="email" name="email" placeholder="Email" required id="emailInput">
+                    <p id="emailError" style="color: red; display: none;">Please enter a valid email address.</p>
+                </div>
+                <div class="contactForm-row">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="contactForm-row">
+                    <p id="wordCountDisplay">0 / 300 characters</p> <!-- Word count display -->
+                    <textarea name="message" placeholder="Message" rows="5" required id="messageInput"></textarea>
+                </div>
+                <div class="contactForm-button">
+                    <button type="submit" id="submitButton">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p class="footerP1">
+        <img th:src="@{/image/copyright.png}" class="footerIcon"> 2024 by CWM Health Medical Center <br>
+        <a href="https://maps.app.goo.gl/PuTPEBo4rdqJWExb8">
+            <img th:src="@{/image/location.png}" class="footerIcon" alt="locationIcon">123 Health Management Street, Waimanu Rd, Suva  </a>
+        <span class="tab-space"></span><img th:src="@{/image/phone.png}" alt="phoneIcon" class="footerIcon"> Tel: 987-654-3210
+
+        <span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span>
+
+        <a href="https://www.facebook.com/pages/CWM%20Hospital,%20Suva,%20Fiji/447406538605734/"><img th:src="@{/image/facebook.png}" alt="facebookIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/twitter.png}" alt="xIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/instagram.png}" alt="xIcon" class="footerIcon1"></a>
+    </p>
+</footer>
+<a th:href="@{/register}" class="floating-btn">Register Now</a>
+<script th:src="@{/js/jsFunctions.js}"></script>
+<script th:src="@{/js/imageSlide.js}"></script>
+</body>
+</html>

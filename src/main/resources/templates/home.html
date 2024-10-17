@@ -1,82 +1,102 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/chatbot.css}">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWM Home Page</title>
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/scroller.css}">
 </head>
 <body>
-<nav>
-
-    <img th:src="@{/image/logo.png}" alt="Logo" class="logo">
-
-    <h1>CWM HEALTH WEBPAGE</h1>
-    <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <li ><a th:href="@{/login}" class="signin">Sign In</a></li>
-    </ul>
-
-
-</nav>
-
-<!-- Floating Chatbot Button -->
-<button class="chatbot-button" onclick="toggleChatWindow()">💬</button>
-
-<!-- Chat Window -->
-<div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-        Chatbot
+<header>
+    <div id="myHeader">
+        <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+        <h3 >CWM HEALTH MEDICAL CENTER</h3>
     </div>
-    <div class="chat-body" id="chatBody">
-        <!-- Messages will be appended here -->
+</header>
+<section>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li ><a th:href="@{/department}">Departments</a></li>
+            <li><a th:href="@{/about}">About Us</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/login}">Sign In</a></li>
+        </ul>
+    </nav>
+    <div class="imageContainer">
+        <h1></h1>
     </div>
-    <div class="chat-footer">
-        <input type="text" id="chatInput" class="chat-input" placeholder="Type a message...">
-        <button class="send-button" onclick="sendMessage()">Send</button>
+
+    <div class="container">
+
+        <div class="bgCustom1">
+            <h1>Cardiology Services</h1>
+            <p>We provide comprehensive cardiology services to take care of your heart health. Our experienced cardiologists and offered treatments are here to help you understand and manage your heart <br>condition.</p>
+            <a href="" class="buttonReadMore">Read More</a>
+        </div>
+        <div class="bgCustom2">
+            <h1>Neurology Services</h1>
+            <p>Our neurology department offers advanced care for neurological disorders. From diagnosis to treatment, our team is dedicated to providing personalized care for patients with brain and nervous system conditions.</p>
+            <a href="" class="buttonReadMore">Read More</a>
+        </div>
+        <div class="bgCustom3">
+            <h1>Orthopaedics Services</h1>
+            <p>Our orthopaedic specialists are committed to helping you overcome musculoskeletal conditions and injuries. We offer a range of treatments to restore your mobility and improve your quality of life.</p>
+            <a href="" class="buttonReadMore">Read More</a>
+        </div>
+
     </div>
-</div>
+    <div class="bookContainer">
+        <h1>Register to Schedule Appointments Online  </h1>
+        <h1> &#10230;</h1>
+        <!--    booking appointment page        -->
+        <a th:href="@{/register}" class="buttonAppointment">Register Now</a>
+    </div>
+    <div class="secondaryContainer">
+        <h1 style="color:#a35e52;">Empowering Your Health</h1>
 
-<script>
-    // Toggle Chat Window Visibility
-    function toggleChatWindow() {
-        const chatWindow = document.getElementById('chatWindow');
-        chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
-    }
+        <div class="secondaryContainer">
+            <img th:src="@{/image/healthy-icon.png}" class="secondaryContainerImg">
+            <h3>Leading Medical Clinic</h3>
+            <p>CWM is proud to be recognized as the number one medical clinic in the area. We are committed to delivering exceptional medical care and improving the lives of our patients.</p>
+        </div>
+        <div class="secondaryContainer">
+            <img th:src="@{/image/check-up-icon.png}" class="secondaryContainerImg">
+            <h3>Expert Specialist Doctors</h3>
+            <p>A wide range of medical expertise. From internal medicine to specialized surgical care, our doctors are dedicated to providing high-quality, personalized treatment for every patient.</p>
+        </div>
+    </div>
 
-    // Send Message to Chatbot
-    async function sendMessage() {
-        const chatInput = document.getElementById('chatInput');
-        const message = chatInput.value.trim();
-        if (message === '') return;
+</section>
 
-        appendMessage('user', message);
+<footer>
+    <p class="footerP1">
 
-        const response = await fetch('/chatbot/message', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message }),
-        });
-        const data = await response.json();
-        appendMessage('bot', data.reply);
+        <img th:src="@{/image/copyright.png}" class="footerIcon"> 2024 by CWM Health Medical Center <br>
+        <a href="https://maps.app.goo.gl/PuTPEBo4rdqJWExb8">
+            <img th:src="@{/image/location.png}" class="footerIcon" alt="locationIcon">123 Health Management Street, Waimanu Rd, Suva  </a>
+        <span class="tab-space"></span><img th:src="@{/image/phone.png}" alt="phoneIcon" class="footerIcon"> Tel: 987-654-3210
 
-        chatInput.value = '';
-    }
+        <span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span>
 
-    // Append Message to Chat Window
-    function appendMessage(sender, text) {
-        const chatBody = document.getElementById('chatBody');
-        const messageElement = document.createElement('div');
-        messageElement.className = `message ${sender}`;
-        messageElement.textContent = text;
-        chatBody.appendChild(messageElement);
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }
-</script>
+        <a href="https://www.facebook.com/pages/CWM%20Hospital,%20Suva,%20Fiji/447406538605734/"><img th:src="@{/image/facebook.png}" alt="facebookIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/twitter.png}" alt="xIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/instagram.png}" alt="xIcon" class="footerIcon1"></a>
+    </p>
+
+</footer>
+
+
+<a th:href="@{/register}" class="floating-btn">Register Now</a>
+<script th:src="@{/js/jsFunctions.js}"></script>
+<script th:src="@{/js/imageSlide.js}"></script>
+
+
 </body>
 </html>

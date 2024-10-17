@@ -2,15 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" th:href="@{/css/signup.css}"> <!-- Assuming your CSS is named style.css -->
+    <link rel="stylesheet" th:href="@{/css/signup.css}"> <!-- Assuming your CSS is named style_old.css -->
     <title>Appointment Request Form</title>
 </head>
 <body>
-<!-- Header -->
 <header class="header">
-    <img src="hospital-logo.png" alt="Hospital Logo" class="logo"> <!-- Replace with your actual logo path -->
-    <h1>CWM HEALTH WEBPAGE</h1>
-    <button class="logout">Logout</button> <!-- Optional logout button -->
+    <img src="hospital-logo.png" alt="Hospital Logo" class="logo">
+    <div class="settings-dropdown">
+        <button class="settings-btn">Settings</button>
+        <div class="settings-menu">
+            <a th:href="@{/patient/settings}">Account Settings</a>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
 </header>
 
 <div class="container">

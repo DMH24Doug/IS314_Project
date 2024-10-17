@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWM Login Page</title>
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/scroller.css}">
+
 </head>
 <body>
+<div class="loginContainer">
+    <div id="myHeader">
+        <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+    </div>
+    <div class="login-top">
+        <h2>Sign in</h2>
+        <a th:href="@{/}" >Back Home</a>
+    </div>
+    <div>
+        <form method="post" th:action="@{/login}">
 
-            <div  th:if="${param.error}" class="alert">
-                <span class="closebtn">&times;</span>
-                <strong>Warning! </strong>Invalid username and password.
-            </div>
-            <div th:if="${param.logout}" class="alert info">
-                <span class="closebtn">&times;</span>
-                <strong>Successfully! </strong>logged out.
-            </div>
+            <label for="userName"></label>
+            <input
+                    type="text"
+                    id="userName"
+                    placeholder="Username"
+                    required>
+            <label for="password"></label>
+            <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required>
+            <a href="">Forgot Password?</a>
+            <button type="submit" id="loginButton">Sign In</button>
 
-            <div class="container_log">
-                <div class="logo">
-                    <img src="_logo.png" alt="Hospital Logo" >
-                </div>
-                <form  method="post" th:action="@{/login}">
-                    <div class="login-box">
-                        <h2>Login</h2>
-                        <input
-                                id="username"
-                                type="text"
-                                class="form-control"
-                                placeholder="Username"
-                                name="username">
-                        <input
-                                id="password"
-                                type="password"
-                                class="form-control"
-                                placeholder="Password"
-                                name="password">
+        </form>
+        <!-- Register link and Google sign-in -->
+        <div class="additional-options">
+            <div class="or-separator">or</div>
+            
+            <!--TODO google auth-->
+            <button class="google-login"><img th:src="@{/image/google.png}" class="icon" alt="googleImg"> &nbsp;Sign in with Google</button>
+        </div>
+    </div>
+</div>
+<div class="register">
 
-                        <div style="display: flex;">
-                            <a href="#" style="margin-right: 100px;">Forgot Password</a>
-                            <a th:href="@{/register}">Sign Up</a>
-                        </div>
-                        <button  type="submit" value="Log in">Login</button>
-                    </div>
-                </form>
-            </div>
+    <a th:href="@{/register}">Don't have an account? Register here!</a>
 
+</div>
 
-<script>
-    var close = document.getElementsByClassName("closebtn");
-    var i;
-
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function(){
-            var div = this.parentElement;
-            div.style.opacity = "0";
-            setTimeout(function(){ div.style.display = "none"; }, 600);
-        }
-    }
-</script>
 </body>
 </html>

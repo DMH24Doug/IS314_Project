@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWM About Page</title>
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/scroller.css}">
+</head>
+<body>
+<header>
+    <div id="myHeader">
+        <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+        <h3 >CWM HEALTH MEDICAL CENTER</h3>
+    </div>
+</header>
+<section>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li ><a th:href="@{/department}">Departments</a></li>
+            <li><a th:href="@{/about}">About Us</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/login}">Sign In</a></li>
+        </ul>
+    </nav>
+    <div class="myContainer">
+        <h1>Health Management System!</h1>
+    </div>
+
+    <div class="container">
+
+        <img src="https://as1.ftcdn.net/v2/jpg/02/68/78/02/1000_F_268780285_xDMSBdVomzEPoAjwsmLPj52AnTxTa3GO.jpg" alt="about_image" id="about" class="img_about">
+        <p class="about_p">
+            PROJECT GOALS:
+
+            Is to be able to provide full management for the system and ensure that PATIENTS <br>
+            are receiving the necessary Services a health facility can provide to an individual, <br>
+            instead of doing that in person (face to face), the website should be able to handle such services remotely.<br>
+            Be able to provide DOCTORS with necessary tools to access patient records and certain <br>
+            hospital inventories to provide services for PATIENTS.
+
+        </p>
+
+
+        <h1>Want to know about us!</h1>
+        <p>This is the homepage.</p>
+
+        <div class="bg-info">
+            <h1>Topic 1</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, libero eget commodo cursus, ligula felis aliquam sapien, vel dignissim est mauris a justo. Sed interdum justo vitae augue cursus, nec suscipit risus tempus. Integer non vehicula libero, vel fermentum erat.</p>
+        </div>
+        <div class="bg-info">
+            <h1>Topic 2</h1>
+            <p>Curabitur convallis scelerisque libero at auctor. Nulla facilisi. Sed dapibus sapien a justo posuere, sed pellentesque mi porttitor. Praesent id ligula id odio ullamcorper tincidunt a vel nulla. Morbi vestibulum dui id elit varius, nec tincidunt lectus suscipit.</p>
+        </div>
+        <div class="bg-info">
+            <h1>Topic 3</h1>
+            <p>Aliquam erat volutpat. Nam nec bibendum libero. Integer ac arcu dapibus, tincidunt turpis ac, tincidunt nisl. Etiam malesuada bibendum turpis, ac pharetra metus elementum a. Donec feugiat, est non tristique laoreet, justo elit pharetra quam, in euismod quam odio a nunc.</p>
+        </div>
+
+    </div>
+    <div class="bookingContainer">
+        <div class="bg-info">
+            <img src="https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=">
+            <h1 class="bgCustom4">Consult With Doctor</h1>
+            <p> 1 hr</p>
+            <p> $90</p>
+            <a href="/templates/onlineBook.html" class="button">Book Now</a>
+        </div>
+        <div class="bg-info">
+            <img src="https://sunrisediagnosis.com/wp-content/uploads/Advanced-specialised-colour-dopplers.jpg">
+            <h1 class="bgCustom4">Sonography</h1>
+            <p> 1 hr</p>
+            <p> $90</p>
+            <a href="/templates/onlineBook.html" class="button">Book Now</a>
+        </div>
+        <div class="bg-info">
+            <img src="https://cardiovascularbusiness.com/sites/default/files/2022-07/microsoftteams-image_3.png">
+            <h1 class="bgCustom4">Consult With Cardiologist</h1>
+            <p> 1 hr</p>
+            <p> $90</p>
+            <a href="/templates/onlineBook.html" class="button">Book Now</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p class="footerP1">
+        <img th:src="@{/image/copyright.png}" class="footerIcon"> 2024 by CWM Health Medical Center <br>
+        <a href="https://maps.app.goo.gl/PuTPEBo4rdqJWExb8">
+            <img th:src="@{/image/location.png}" class="footerIcon" alt="locationIcon">123 Health Management Street, Waimanu Rd, Suva  </a>
+        <span class="tab-space"></span><img th:src="@{/image/phone.png}" alt="phoneIcon" class="footerIcon"> Tel: 987-654-3210
+
+        <span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span>
+
+        <a href="https://www.facebook.com/pages/CWM%20Hospital,%20Suva,%20Fiji/447406538605734/"><img th:src="@{/image/facebook.png}" alt="facebookIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/twitter.png}" alt="xIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/instagram.png}" alt="xIcon" class="footerIcon1"></a>
+    </p>
+
+</footer>
+<a th:href="@{/register}" class="floating-btn">Register Now</a>
+<script th:src="@{/js/jsFunctions.js}"></script>
+<script th:src="@{/js/imageSlide.js}"></script>
+</body>
+</html>

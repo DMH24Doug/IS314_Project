@@ -31,6 +31,7 @@ public class DoctorController {
 
     //TODO add controls and method for doctor to view patientList
 
+
     //TODO add controls and method for doctor to view patientSchedules && patientPrescription
 
     //TODO add controls and method for doctors to respond to schedules and auto genPrescriptions

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWM Department Page</title>
+  <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/scroller.css}">
+</head>
+<body>
+<header>
+
+  <div id="myHeader">
+    <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+    <h3 >CWM HEALTH MEDICAL CENTER</h3>
+  </div>
+</header>
+<section>
+  <nav>
+    <ul>
+      <li><a th:href="@{/}">Home</a></li>
+      <li ><a th:href="@{/department}">Departments</a></li>
+      <li><a th:href="@{/about}">About Us</a></li>
+      <li><a th:href="@{/contact}">Contact</a></li>
+      <li><a th:href="@{/login}">Sign In</a></li>
+    </ul>
+  </nav>
+  <div class="myContainer">
+    <h1>Health Departments</h1>
+  </div>
+
+  <div class="departmentContainer">
+
+    <div >
+      <img src="https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=">
+      <h1 class="bgCustom4">Cardiology Services</h1>
+      <p> Our cardiology department provides comprehensive care for heart-related conditions.
+        Our team of experienced cardiologists ensures personalized treatment plans for each patient,
+        focusing on both prevention and intervention</p>
+      <a th:href="@{/}">Explore Cardiology</a>
+    </div>
+    <div >
+      <img src="https://sunrisediagnosis.com/wp-content/uploads/Advanced-specialised-colour-dopplers.jpg">
+      <h1 class="bgCustom4">Neurology Services</h1>
+      <p> At our neurology department, we specialize in diagnosing and treating disorders of the nervous system.
+        Our multidisciplinary team collaborates to offer advanced neurological care,
+        from common issues to complex conditions.</p>
+      <a th:href="@{/}" >Discover Neurology</a>
+    </div>
+    <div >
+      <img src="https://cardiovascularbusiness.com/sites/default/files/2022-07/microsoftteams-image_3.png">
+      <h1 class="bgCustom4">Orthopaedics Services</h1>
+      <p> The orthopedics department is committed to delivering exceptional musculoskeletal care.
+        Through innovative treatments and surgical expertise,
+        we aim to restore mobility and improve the quality of life for our patients.</p>
+      <a th:href="@{/}" >Learn More on Orthopaedics</a>
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+  <p class="footerP1">
+    <img th:src="@{/image/copyright.png}" class="footerIcon"> 2024 by CWM Health Medical Center <br>
+    <a href="https://maps.app.goo.gl/PuTPEBo4rdqJWExb8">
+      <img th:src="@{/image/location.png}" class="footerIcon" alt="locationIcon">123 Health Management Street, Waimanu Rd, Suva  </a>
+    <span class="tab-space"></span><img th:src="@{/image/phone.png}" alt="phoneIcon" class="footerIcon"> Tel: 987-654-3210
+
+    <span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span>
+
+    <a href="https://www.facebook.com/pages/CWM%20Hospital,%20Suva,%20Fiji/447406538605734/"><img th:src="@{/image/facebook.png}" alt="facebookIcon" class="footerIcon1"></a>
+    &nbsp;&nbsp;&nbsp;
+    <a href=""><img th:src="@{/image/twitter.png}" alt="xIcon" class="footerIcon1"></a>
+    &nbsp;&nbsp;&nbsp;
+    <a href=""><img th:src="@{/image/instagram.png}" alt="xIcon" class="footerIcon1"></a>
+  </p>
+
+</footer>
+<a th:href="@{/register}" class="floating-btn">Register Now</a>
+<script th:src="@{/js/jsFunctions.js}"></script>
+<script th:src="@{/js/imageSlide.js}"></script>
+</body>
+</html>
