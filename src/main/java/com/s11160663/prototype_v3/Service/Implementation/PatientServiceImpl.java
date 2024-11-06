@@ -38,15 +38,26 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientEntity savePatient(PatientDTO patientDTO) {
-        //TODO implement session user
-        //String username = SecurityUtil.getSessionUser();
-        //UserEntity user = userRepository.findByName(username);
+        // Fetch the currently logged-in username from the session
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByName(username).orElse(null);
+
+        if (user == null) {
+            throw new IllegalStateException("User not found in the database");
+        }
+
+        // Map the PatientDTO to a PatientEntity
         PatientEntity patient = PatientMapper.mapToPatient(patientDTO);
 
-        //after creating patient -> sets patient to current user
-      //  user.setPatient(patient);
+        // Set the user to the patient entity
+        patient.setUser(user);
+        // Set the patient to the user entity (for bi-directional relationship)
+        user.setPatient(patient);
+
+        // Save and return the patient entity
         return patientRepository.save(patient);
     }
+
 
     @Override
     public PatientDTO findPatientById(Long id) {
@@ -67,7 +78,11 @@ public class PatientServiceImpl implements PatientService {
 
     }
 
-
+    @Override
+    public PatientEntity findById(Long id) {
+        PatientEntity patient = patientRepository.findById(id).get();
+        return patient;
+    }
 
 
 }

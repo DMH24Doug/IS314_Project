@@ -4,6 +4,7 @@ package com.s11160663.prototype_v3.Security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -31,15 +32,15 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .requestMatchers("/admin/**").permitAll()
-                .requestMatchers("/chatbot/","/login/**", "/register", "/patient","/css/**", "/assets/**","/js/**",
-                        "/department", "/about", "/contact", "/cardiology", "/neurology", "/orthopaedics")
-                .permitAll()
+                .requestMatchers("/login", "/login_success","/resources/**").permitAll()
+                .requestMatchers("/patient/**").hasAuthority("PATIENT")
+                .requestMatchers("/doctor/**","/examination/**").hasAuthority("EMPLOYEE")
                 .and()
 
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .successHandler(new CustomAuthSuccessHandler())
+                        .defaultSuccessUrl("/login_success", true)
                         .failureUrl("/login?error=true")
                         .permitAll()
                 ).logout(
@@ -50,7 +51,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    
     public void configure(AuthenticationManagerBuilder builder) throws Exception {
         builder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }

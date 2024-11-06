@@ -2,7 +2,7 @@ package com.s11160663.prototype_v3.Controller;
 
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import com.s11160663.prototype_v3.DTO.RegistrationDTO;
 import com.s11160663.prototype_v3.Model.UserEntity;
@@ -13,9 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.Collection;
 
 
 @Controller
@@ -29,73 +26,113 @@ public class AuthController {
 
     //sets user into homepage when app is launched
     @GetMapping("/")
-    public String home() {
-        return "home";
+    public String home(Model model) {
+
+        return "home"; // Replace with the name of your home template
     }
 
-    //user login page
-    @GetMapping("/login")
-    public String login(Authentication authentication) {
-//        if (authentication != null && authentication.isAuthenticated()) {
-//            String username = authentication.getName();
-//
-//            //retrieving user details to get userID
-//            UserEntity user = (UserEntity) authentication.getPrincipal();
-//            Long userId = user.getId();
-//
-//            //gets user respectively by Roles and IDs to their home page
-//            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-//            for (GrantedAuthority authority : authorities) {
-//                String role = authority.getAuthority();
-//                if (role.equals("ADMIN")) {
-//                    return "redirect:/admin" + userId;
-//                }else if (role.equals("EMPLOYEE")) {
-//                    return "redirect:/employee" + userId;
-//                }else if (role.equals("PATIENT")) {
-//                    return "redirect:/patient" + userId;
-//                }
-//            }
-//        }
+        // Show the login page
+        @GetMapping("/login")
+        public String login() {
+            return "login";  // Renders the login.html page
+        }
+
+        // After successful login, check if patient profile exists
+        @GetMapping("/login_success")
+        public String loginSuccess(Authentication authentication) {
+            // Get the logged-in username and log it for debugging
+            String username = authentication.getName();
+            System.out.println("Logging in user: " + username);
+
+            // Fetch user by username
+            UserEntity user = userService.findByUsername(username);
+
+            // Check if the user exists
+            if (user == null) {
+                System.out.println("User not found for username: " + username);
+                return "redirect:/login?error=user_not_found";
+            }
+
+            // Check roles of the logged-in user
+            boolean isAdmin = user.getRoles().stream()
+                    .anyMatch(role -> role.getName().equals("ADMIN"));
+            boolean isPatient = user.getRoles().stream()
+                    .anyMatch(role -> role.getName().equals("PATIENT"));
+            boolean isDoctor = user.getRoles().stream()
+                    .anyMatch(role -> role.getName().equals("EMPLOYEE"));
+
+            // Redirect based on roles
+            if (isAdmin) {
+                System.out.println("Admin user logged in: " + username);
+                return "redirect:/admin";
+            }
+
+            if (isPatient) {
+                // Check if patient profile exists
+                if (user.getPatient() == null) {
+                    System.out.println("Patient profile not found, redirecting to create profile.");
+                    return "redirect:/patient/create";
+                } else {
+                    System.out.println("Patient profile found, redirecting to patient home.");
+                    return "redirect:/patient/patient_home/" + user.getPatient().getId();
+                }
+            }
+            if (isDoctor) {
+                // Check if patient profile exists
+                if (user.getDoctor() == null) {
+                    System.out.println("Doctor profile not found, redirecting to create profile.");
+                    return "redirect:/doctor/create";
+                } else {
+                    System.out.println("Patient profile found, redirecting to patient home.");
+                    return "redirect:/doctor/doctor_home/" + user.getDoctor().getId();
+                }
+            }
+
+            // If no valid role is found, redirect to a generic page
+            System.out.println("No valid role found for user: " + username);
+            return "redirect:/login?error=invalid_role";
+        }
+
+        // Optional: Logout handler
+        @GetMapping("/logout")
+        public String logout() {
+            return "redirect:/login?logout";
+        }
 
 
-        return "login";
-    }
 
-//    //user registration page
+    // handler method to User register page request
     @GetMapping("/register")
-    public String register(Model model) {
-        //creates new user (if registration is successful)
+    public String getRegisterForm(Model model) {
         RegistrationDTO user = new RegistrationDTO();
         model.addAttribute("user", user);
-        return "register";
-
+        return "register_patient";
     }
-
-    //post methods for registration page
     @PostMapping("/register/save")
-    public String register(
-            @Valid @ModelAttribute("user") RegistrationDTO user,
-            BindingResult result,
-            RedirectAttributes redirectAttributes) {
+    public String register(@Valid @ModelAttribute("user") RegistrationDTO user,
+                           BindingResult result, Model model) {
 
+        // Check if the email already exists
+        UserEntity existingUserEmail = userService.findByEmail(user.getEmail());
+        if (existingUserEmail != null && existingUserEmail.getEmail() != null) {
+            result.rejectValue("email", "error.user", "Email already in use.");
+        }
+
+        // Check if the username already exists
+        UserEntity existingUserUsername = userService.findByUsername(user.getUsername());
+        if (existingUserUsername != null && existingUserUsername.getName() != null) {
+            result.rejectValue("username", "error.user", "Username already in use.");
+        }
+
+        // If there are validation errors, return to the registration form
         if (result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
-            redirectAttributes.addFlashAttribute("user", user); // Preserve input
-            return "redirect:/register";
+            model.addAttribute("user", user);
+            return "register_patient";  // Return the register page with error messages
         }
 
-        // Check if email or username already exists
-        if (userService.findByEmail(user.getEmail()) != null) {
-            redirectAttributes.addFlashAttribute("message", "Email already in use.");
-            return "redirect:/register";
-        }
-        if (userService.findByUsername(user.getUsername()) != null) {
-            redirectAttributes.addFlashAttribute("message", "Username already in use.");
-            return "redirect:/register";
-        }
-
+        // Save the new user if no errors
         userService.saveUser(user);
-        return "redirect:/patient/create?success";
+        return "redirect:/login?success";  // Redirect to login page on success
     }
 
 
@@ -125,5 +162,8 @@ public class AuthController {
     //maps to orthopaedics
     @GetMapping("/orthopaedics")
     public String orthopaedics() {return "orthopaedics";}
+
+    @GetMapping("/scheduling")
+    public String scheduling() {return "scheduling";}
 
 }

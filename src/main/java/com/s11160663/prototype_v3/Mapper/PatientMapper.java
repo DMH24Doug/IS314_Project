@@ -17,10 +17,11 @@ public class PatientMapper {
                 .gender(patientDTO.getGender())
                 .dateOfBirth(patientDTO.getDateOfBirth())
                 .address(patientDTO.getAddress())
-                .phoneNumber(String.valueOf(patientDTO.getPhoneNumber()))
+                .phoneNumber(patientDTO.getPhoneNumber())
                 .emergencyContactName(patientDTO.getEmergencyContactName())
                 .emergencyContactName(patientDTO.getEmergencyContactName())
                 .user(patientDTO.getUser())
+                .profileImagePath(patientDTO.getProfileImagePath())
                 .build();
     }
     //returns employee details from employee to employee data objects
@@ -32,11 +33,12 @@ public class PatientMapper {
                 .patient_lname(patient.getPatient_lname())
                 .gender(patient.getGender())
                 .dateOfBirth(patient.getDateOfBirth())
-                .phoneNumber(String.valueOf(patient.getPhoneNumber()))
+                .phoneNumber(patient.getPhoneNumber())
                 .address(patient.getAddress())
                 .emergencyContactName(patient.getEmergencyContactName())
                 .emergencyContactPhone(patient.getEmergencyContactPhone())
                 .user(patient.getUser())
+                .profileImagePath(patient.getProfileImagePath())
                 .build();
     }
 }

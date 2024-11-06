@@ -15,5 +15,5 @@ public interface PatientService {
     void updatePatient(PatientDTO patientDTO);
 
 
-
+    PatientEntity findById(Long patientId);
 }

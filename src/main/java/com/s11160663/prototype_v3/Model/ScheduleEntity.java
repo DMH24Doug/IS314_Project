@@ -16,7 +16,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "schedule")
+@Entity
+@Table(name = "schedule")
 public class ScheduleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +32,7 @@ public class ScheduleEntity {
     private String message;
     private String attend;
 
-    @ManyToMany
-    @JoinTable(
-            name="patient_schedules",
-            joinColumns={@JoinColumn(name="PATIENT_ID", referencedColumnName="ID")},
-            inverseJoinColumns={@JoinColumn(name="SCHEDULE_ID", referencedColumnName="ID")})
-    private List<PatientEntity> patient = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "patient_id", referencedColumnName = "id")
+    private PatientEntity patient;
 }

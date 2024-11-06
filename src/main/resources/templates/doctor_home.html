@@ -1,80 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
-  <link rel="stylesheet" th:href="@{/css/style_v1.css}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CWM Patient Dashboard</title>
+  <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/color.css}">
+  <link rel="stylesheet" th:href="@{/css/scroller.css}">
+  <link rel="stylesheet" th:href="@{/css/healthRecord.css}"></link>
+  <link rel="stylesheet" th:href="@{/css/dashTable.css}">
+  <style>
+    /* Ensure each contentDiv has a consistent size and becomes scrollable */
+
+  </style>
 </head>
 <body>
-<div class="header">
-  <img th:src="logo.png" alt="Hospital Logo" class="logo">
-  <button class="logout"><a th:href="@{/logout}">Logout</a></button>
-</div>
-<div class="container">
-  <div class="sidebar">
-    <button class="active"><a>Profile</a></button>
-    <button ><a th:href="@{/patient/health_record}">Health Records</a></button>
-    <button><a th:href="@{/patient/appointment}">Appointments</a></button>
-    <button>Payments</button>
-  </div>
+<header>
 
-
-
-  <div class="content">
-    <table>
-      <tr>
-        <th>Patient ID:</th>
-        <td th:text="${doctor.id}"></td>
-      </tr>
-      <tr>
-        <th>First Name:</th>
-        <td th:text="${doctor.doctor_fname}"></td>
-      </tr>
-      <tr>
-        <th>Last Name:</th>
-        <td th:text="${doctor.doctor_lname}"></td>
-      </tr>
-      <tr>
-        <th>Phone Number:</th>
-        <td th:text="${doctor.phoneNumber}"></td>
-      </tr>
-
-      <tr>
-        <th>Address:</th>
-        <td th:text="${doctor.address}"></td>
-      </tr>
-      <tr>
-        <th>Gender:</th>
-        <td th:text="${doctor.gender}"></td>
-      </tr>
-      <tr>
-        <th>Date of Birth:</th>
-        <td th:text="${#dates.format(doctor.dateOfBirth, 'yyyy-MM-dd')}"></td>
-      </tr>
-      <tr>
-        <th>Emergency Contact Name:</th>
-        <td th:text="${doctor.emergencyContactName}"></td>
-      </tr>
-      <tr>
-        <th>Emergency Contact Phone:</th>
-        <td th:text="${doctor.emergencyContactPhone}"></td>
-      </tr>
-    </table>
+  <div id="myHeader">
+    <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+    <h3 >CWM HEALTH MEDICAL CENTER</h3>
 
   </div>
+</header>
+<section>
+  <nav>
+    <ul>
 
 
-</div>
-<script>
-  document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const content = header.nextElementSibling;
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
-      header.classList.toggle('active');
-    });
-  });
-</script>
+    </ul>
+    <!-- Profile Picture Button in Navbar -->
+    <div class="accountDropdown">
+      <button class="accountButton" onclick="toggleDropdown()">
+        <img th:src="@{/doctor/image/{id}(id=${doctor.id})}" alt="User Profile Picture">
+      </button>
+      <div id="dropdownMenu" class="dropdown-content">
+        <ul>
+          <li><a href="#" onclick="showDiv('profileDiv')">Profile</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a th:href="@{/logout}"  >Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="myContainer">
+    <h1>Welcome Back, <span th:text="${doctor.doctor_fname} + ' ' + ${doctor.doctor_lname}">Doctor Name</span></h1>
+  </div>
+</section>
+<section class="contentSection">
+  <aside class="patientAsideMenu">
+    <div class="asideContainer">
+      <button class="button" onclick="showDiv('dashboardDiv')">Dashboard</button>
+      <button class="button" onclick="showDiv('patientDiv')">View Patients</button>
+      <button class="button" onclick="showDiv('bookingsDiv')">View Appointments</button>
+      <button class="button" onclick="showDiv('healthRecordsDiv')">Health Records</button>
+      <button class="button" onclick="showDiv('prescriptionDiv')">Prescription Records</button>
+    </div>
+  </aside>
 
+  <div class="dashboardContainer">
+    <!-- Dashboard Section -->
+    <div id="profileDiv" class="contentDiv"  style="display: none;">
+      <h2>Your Profile Information</h2>
+      <div class="profileContainer">
+        <div class="profilePictureContainer">
+          <!-- Load profile image via ResponseEntity endpoint -->
+          <img th:src="@{/doctor/image/{id}(id=${doctor.id})}" alt="Profile Image" class="profile-image">
+        </div>
 
+        <!-- Profile Details Section -->
+        <div class="profileDetails">
+          <div class="profileRow">
+            <div class="profileGroup">
+              <label>First Name:</label>
+              <p id="fname" th:text="${doctor.doctor_fname}">John</p>
+            </div>
+            <div class="profileGroup">
+              <label>Last Name:</label>
+              <p id="lname" th:text="${doctor.doctor_lname}">Doe</p>
+            </div>
+          </div>
+
+          <div class="profileRow">
+            <div class="profileGroup">
+              <label>Gender:</label>
+              <p id="gender" th:text="${doctor.gender}">Male</p>
+            </div>
+            <div class="profileGroup">
+              <label>Email:</label>
+              <!-- TODO email-->
+              <p id="email" >johndoe@example.com</p>
+            </div>
+          </div>
+
+          <div class="profileRow">
+            <div class="profileGroup">
+              <label>Date of Birth:</label>
+              <p id="dob" th:text="${#dates.format(doctor.dateOfBirth, 'yyyy-MM-dd')}">1990-01-01</p>
+            </div>
+            <div class="profileGroup">
+              <label>Phone:</label>
+              <p id="phone" th:text="${doctor.phoneNumber}">(679) 1234567</p>
+            </div>
+          </div>
+
+          <div class="profileRow">
+            <div class="profileGroup">
+              <label>Address:</label>
+              <p id="address" th:text="${doctor.address}">123 Main Street, Suva</p>
+            </div>
+          </div>
+
+          <div class="profileRow">
+            <div class="profileGroup">
+              <label>Emergency Contact Name:</label>
+              <p id="emergencyName" th:text="${doctor.emergencyContactName}">Jane Doe</p>
+            </div>
+            <div class="profileGroup">
+              <label>Emergency Phone:</label>
+              <p id="emergencyPhone" th:text="${doctor.emergencyContactPhone}">(679) 7654321</p>
+            </div>
+          </div>
+
+          <div class="profileRow">
+            <div class="profileGroup">
+              <label>Emergency Email:</label>
+              <!-- TODO email-->
+              <p id="emergencyEmail" >janedoe@example.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id="dashboardDiv" class="contentDiv active">
+      <h2>Doctor Dashboard</h2>
+
+      <div class="card-container">
+        <div class="card">
+          <h3>Total Health Records</h3>
+          <p>12 Records</p>
+        </div>
+        <div class="card">
+          <h3>Upcoming Bookings</h3>
+          <p>3 Bookings</p>
+        </div>
+        <div class="card">
+          <h3>Prescriptions Issued</h3>
+          <p>8 Prescriptions</p>
+        </div>
+      </div>
+    </div>
+    <!-- Book Appointment Section -->
+    <div id="patientDiv" class="contentDiv" style="display: none;">
+      <h2 class="bg-black">Patient Records</h2>
+      <table class="healthRecordsTable">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>CONTACT</th>
+          <th>ADDRESS</th>
+          <th>View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="patient : ${patient}">
+          <td th:text="${patient.id}"></td>
+          <td th:text="${patient.patient_fname} +' '+ ${patient.patient_lname}"></td>
+          <td th:text="${patient.phoneNumber}"></td>
+          <td th:text="${patient.address}"></td>
+          <td>
+            <a class="viewButton"
+               th:href="@{/examination/create/{id}(id=${patient.id})}">
+              <img th:src="@{/image/edit.png}" alt="View" class="bIcon">
+            </a>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Patient Details Div (Initially Hidden) -->
+    <div id="patientDetailsDiv" class="contentDiv" style="display: none;">
+      <h2>Patient Information</h2>
+      <div id="patientInfo">
+        <p><strong>ID:</strong> <span id="patientId"></span></p>
+        <p><strong>Name:</strong> <span id="patientName"></span></p>
+        <p><strong>Address:</strong> <span id="patientAddress"></span></p>
+      </div>
+      <button onclick="backToPatientList()">Back</button>
+    </div>
+    <!-- Bookings Section -->
+    <div id="bookingsDiv" class="contentDiv" style="display: none;">
+      <h2>Your Bookings</h2>
+      <p>View all your upcoming and past appointments here.</p>
+    </div>
+
+    <!-- Health Records Section -->
+    <div id="healthRecordsDiv" class="contentDiv" style="display: none;">
+      <h2>Health Records</h2>
+
+    </div>
+
+    <!-- Prescription Records Section -->
+    <div id="prescriptionDiv" class="contentDiv " style="display: none;">
+      <h2>Prescription Records</h2>
+      <p>View all your prescribed medications.</p>
+    </div>
+  </div>
+
+</section>
+<footer>
+  <p class="footerP1">
+
+    <img th:src="@{/image/copyright.png}" class="footerIcon"> 2024 by CWM Health Medical Center <br>
+    <a href="https://maps.app.goo.gl/PuTPEBo4rdqJWExb8">
+      <img th:src="@{/image/location.png}" class="footerIcon" alt="locationIcon">123 Health Management Street, Waimanu Rd, Suva  </a>
+    <span class="tab-space"></span><img th:src="@{/image/phone.png}" alt="phoneIcon" class="footerIcon"> Tel: 987-654-3210
+
+    <span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span>
+
+    <a href="https://www.facebook.com/pages/CWM%20Hospital,%20Suva,%20Fiji/447406538605734/"><img th:src="@{/image/facebook.png}" alt="facebookIcon" class="footerIcon1"></a>
+    &nbsp;&nbsp;&nbsp;
+    <a href=""><img th:src="@{/image/twitter.png}" alt="xIcon" class="footerIcon1"></a>
+    &nbsp;&nbsp;&nbsp;
+    <a href=""><img th:src="@{/image/instagram.png}" alt="xIcon" class="footerIcon1"></a>
+  </p>
+
+</footer>
+
+<!--  Java script links  -->
+<script th:src="@{/js/dashboard.js}"></script>
 </body>
 </html>

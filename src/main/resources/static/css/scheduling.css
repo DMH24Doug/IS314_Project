@@ -1,0 +1,181 @@
+.bookNowContainer {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.selectionSection {
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(241, 241, 241, 0.9);
+    box-sizing: border-box;
+}
+
+.calendarTimeWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Styling for the calendar and time slot containers */
+.calendar-container {
+    width: 50%;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.calendar-day {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.calendar-day:hover {
+    background-color: #1a4528;
+    color: white;
+}
+
+.selected-day {
+    background-color: #1a4528;
+    color: white;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-nav button {
+    background-color: #1a4528;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.calendar-nav button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Styling for the time slots */
+.timeSlot-container {
+    width: 45%;
+}
+
+.timeSlot {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.timeSlot button {
+    padding: 10px;
+    background-color: #1a4528;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.timeSlot button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.summarySection {
+    width: 30%;
+    padding: 20px;
+    background-color: rgba(184, 148, 20, 0.2);
+    box-sizing: border-box;
+}
+
+.summaryContainer {
+    background-color: white;
+    padding: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.buttonSchedule {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.buttonNext {
+    background-color: #1a4528;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.buttonNext:hover {
+    background-color: #0d5a2e;
+}
+
+.headerSchedule {
+    background: none;
+    color: #000000;
+    text-align: center;
+    font-weight: normal;
+    width: 100vw; /* Changed from 100vw to 100% */
+    height: auto;
+    overflow: auto;
+    font-size: 2vw;
+    padding-left: 400px;
+    display: flex;
+    align-items: center;
+}
+/* Flex container to align service on left and back on right */
+.infoGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.serviceDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.serviceDetails span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a4528;
+}
+
+.servicePrice {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #555;
+}
+
+.backLink {
+    text-decoration: none;
+    color: #1a4528;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+}

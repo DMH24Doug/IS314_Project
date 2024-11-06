@@ -23,16 +23,30 @@
             <li ><a th:href="@{/department}">Departments</a></li>
             <li><a th:href="@{/about}">About Us</a></li>
             <li><a th:href="@{/contact}">Contact</a></li>
-            <li><a th:href="@{/login}">Sign In</a></li>
+            <li th:if="${username == null}"><a th:href="@{/login}">Sign In</a></li>
         </ul>
+        <!-- Profile Picture Button in Navbar -->
+        <div class="accountDropdown" th:if="${username != null}">
+            <button class="accountButton" onclick="toggleDropdown()">
+                <img th:src="@{${image}}" th:alt="@{/image/profile}">
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+                <ul>
+                    <li><a th:href="'/patient/patient_home/' + ${id}">Dashboard</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
     </nav>
     <div class="myContainer">
-        <h1>Health Management System!</h1>
+        <h1>Health Management System</h1>
     </div>
 
     <div class="container">
 
-        <img src="https://as1.ftcdn.net/v2/jpg/02/68/78/02/1000_F_268780285_xDMSBdVomzEPoAjwsmLPj52AnTxTa3GO.jpg" alt="about_image" id="about" class="img_about">
+
         <p class="about_p">
             PROJECT GOALS:
 
@@ -45,46 +59,30 @@
         </p>
 
 
-        <h1>Want to know about us!</h1>
-        <p>This is the homepage.</p>
-
+        <h1>Departments</h1>
         <div class="bg-info">
-            <h1>Topic 1</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, libero eget commodo cursus, ligula felis aliquam sapien, vel dignissim est mauris a justo. Sed interdum justo vitae augue cursus, nec suscipit risus tempus. Integer non vehicula libero, vel fermentum erat.</p>
-        </div>
-        <div class="bg-info">
-            <h1>Topic 2</h1>
-            <p>Curabitur convallis scelerisque libero at auctor. Nulla facilisi. Sed dapibus sapien a justo posuere, sed pellentesque mi porttitor. Praesent id ligula id odio ullamcorper tincidunt a vel nulla. Morbi vestibulum dui id elit varius, nec tincidunt lectus suscipit.</p>
-        </div>
-        <div class="bg-info">
-            <h1>Topic 3</h1>
-            <p>Aliquam erat volutpat. Nam nec bibendum libero. Integer ac arcu dapibus, tincidunt turpis ac, tincidunt nisl. Etiam malesuada bibendum turpis, ac pharetra metus elementum a. Donec feugiat, est non tristique laoreet, justo elit pharetra quam, in euismod quam odio a nunc.</p>
-        </div>
-
-    </div>
-    <div class="bookingContainer">
-        <div class="bg-info">
-            <img src="https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=">
+            <img class="aboutImg" src="https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=">
             <h1 class="bgCustom4">Consult With Doctor</h1>
             <p> 1 hr</p>
             <p> $90</p>
             <a href="/templates/onlineBook.html" class="button">Book Now</a>
         </div>
         <div class="bg-info">
-            <img src="https://sunrisediagnosis.com/wp-content/uploads/Advanced-specialised-colour-dopplers.jpg">
-            <h1 class="bgCustom4">Sonography</h1>
+            <img class="aboutImg" src="https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=">
+            <h1 class="bgCustom4">Consult With Doctor</h1>
             <p> 1 hr</p>
             <p> $90</p>
             <a href="/templates/onlineBook.html" class="button">Book Now</a>
         </div>
         <div class="bg-info">
-            <img src="https://cardiovascularbusiness.com/sites/default/files/2022-07/microsoftteams-image_3.png">
-            <h1 class="bgCustom4">Consult With Cardiologist</h1>
+            <img class="aboutImg" src="https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=">
+            <h1 class="bgCustom4">Consult With Doctor</h1>
             <p> 1 hr</p>
             <p> $90</p>
             <a href="/templates/onlineBook.html" class="button">Book Now</a>
         </div>
     </div>
+
 </section>
 
 <footer>

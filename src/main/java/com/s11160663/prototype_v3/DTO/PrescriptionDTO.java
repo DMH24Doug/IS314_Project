@@ -12,6 +12,9 @@ public class PrescriptionDTO {
 
     private Long id;
     private String name;
+    private String dosage;
+    private String frequency;
     private String description;
+
     private List<PatientEntity> patients;
 }

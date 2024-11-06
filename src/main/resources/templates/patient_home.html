@@ -2,75 +2,272 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Patient Profile</title>
-    <link rel="stylesheet" th:href="@{/css/style_v1.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWM Patient Dashboard</title>
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/scroller.css}">
+    <link rel="stylesheet" th:href="@{/css/dashTable.css}">
+    <link rel="stylesheet" th:href="@{/css/healthRecord.css}"></link>
+    <style>
+        /* Ensure each contentDiv has a consistent size and becomes scrollable */
+
+    </style>
 </head>
 <body>
-<header class="header">
-    <img src="hospital-logo.png" alt="Hospital Logo" class="logo">
-    <div class="settings-dropdown">
-        <button class="settings-btn">Settings</button>
-        <div class="settings-menu">
-            <a th:href="@{/patient/settings}">Account Settings</a>
-            <a th:href="@{/logout}">Logout</a>
-        </div>
+<header>
+
+    <div id="myHeader">
+        <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+        <h3 >CWM HEALTH MEDICAL CENTER</h3>
+
     </div>
 </header>
+<section>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li ><a th:href="@{/department}">Departments</a></li>
+            <li><a th:href="@{/about}">About Us</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
 
-<div class="container">
-    <div class="sidebar">
-        <button class="active"><a>Profile</a></button>
-        <button><a th:href="@{/patient/health_record}">Health Records</a></button>
-        <button><a th:href="@{/patient/appointment}">Appointments</a></button>
-        <button>Payments</button>
+        </ul>
+        <!-- Profile Picture Button in Navbar -->
+        <div class="accountDropdown">
+            <button class="accountButton" onclick="toggleDropdown()">
+                <img th:src="@{/patient/image/{id}(id=${patient.id})}" alt="User Profile Picture">
+            </button>
+            <div id="dropdownMenu" class="dropdown-content">
+                <ul>
+                    <li><a href="#" onclick="showDiv('profileDiv')">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a th:href="@{/logout}"  >Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="myContainer">
+        <h1>Welcome Back, <span th:text="${patient.patient_fname} + ' ' + ${patient.patient_lname}">Patient Name</span></h1>
     </div>
+</section>
+<section class="contentSection">
+    <aside class="patientAsideMenu">
+        <div class="asideContainer">
+            <button class="button" onclick="showDiv('dashboardDiv')">Dashboard</button>
+            <button class="button" onclick="showDiv('appointmentDiv')">Book Appointment</button>
+            <button class="button" onclick="showDiv('bookingsDiv')">Bookings</button>
+            <button class="button" onclick="showDiv('healthRecordsDiv')">Health Records</button>
+            <button class="button" onclick="showDiv('prescriptionDiv')">Prescription Records</button>
+        </div>
+    </aside>
 
-    <div class="content">
-        <div class="profile-header">
-            <h2>Patient Profile</h2>
-            <p>Details of your personal information</p>
+    <div class="dashboardContainer">
+        <!-- Dashboard Section -->
+        <div id="profileDiv" class="contentDiv true" >
+            <h2>Your Profile Information</h2>
+            <div class="profileContainer">
+                <div class="profilePictureContainer">
+                    <!-- Load profile image via ResponseEntity endpoint -->
+                    <img th:src="@{/patient/image/{id}(id=${patient.id})}" alt="Profile Image" class="profile-image">
+                </div>
+
+                <!-- Profile Details Section -->
+                <div class="profileDetails">
+                    <div class="profileRow">
+                        <div class="profileGroup">
+                            <label>First Name:</label>
+                            <p id="fname" th:text="${patient.patient_fname}">John</p>
+                        </div>
+                        <div class="profileGroup">
+                            <label>Last Name:</label>
+                            <p id="lname" th:text="${patient.patient_lname}">Doe</p>
+                        </div>
+                    </div>
+
+                    <div class="profileRow">
+                        <div class="profileGroup">
+                            <label>Gender:</label>
+                            <p id="gender" th:text="${patient.gender}">Male</p>
+                        </div>
+                        <div class="profileGroup">
+                            <label>Email:</label>
+                            <!-- TODO email-->
+                            <p id="email" >johndoe@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="profileRow">
+                        <div class="profileGroup">
+                            <label>Date of Birth:</label>
+                            <p id="dob" th:text="${#dates.format(patient.dateOfBirth, 'yyyy-MM-dd')}">1990-01-01</p>
+                        </div>
+                        <div class="profileGroup">
+                            <label>Phone:</label>
+                            <p id="phone" th:text="${patient.phoneNumber}">(679) 1234567</p>
+                        </div>
+                    </div>
+
+                    <div class="profileRow">
+                        <div class="profileGroup">
+                            <label>Address:</label>
+                            <p id="address" th:text="${patient.address}">123 Main Street, Suva</p>
+                        </div>
+                    </div>
+
+                    <div class="profileRow">
+                        <div class="profileGroup">
+                            <label>Emergency Contact Name:</label>
+                            <p id="emergencyName" th:text="${patient.emergencyContactName}">Jane Doe</p>
+                        </div>
+                        <div class="profileGroup">
+                            <label>Emergency Phone:</label>
+                            <p id="emergencyPhone" th:text="${patient.emergencyContactPhone}">(679) 7654321</p>
+                        </div>
+                    </div>
+
+                    <div class="profileRow">
+                        <div class="profileGroup">
+                            <label>Emergency Email:</label>
+                            <!-- TODO email-->
+                            <p id="emergencyEmail" >janedoe@example.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="dashboardDiv" class="contentDiv " style="display: none;">
+            <h2>Patient Dashboard</h2>
+
+            <div class="card-container">
+                <div class="card">
+                    <h3>Total Health Records</h3>
+                    <p>12 Records</p>
+                </div>
+                <div class="card">
+                    <h3>Upcoming Bookings</h3>
+                    <p>3 Bookings</p>
+                </div>
+                <div class="card">
+                    <h3>Prescriptions Issued</h3>
+                    <p>8 Prescriptions</p>
+                </div>
+            </div>
+        </div>
+        <!-- Book Appointment Section -->
+        <div id="appointmentDiv" class="contentDiv" style="display: none;">
+            <div class="bookingContainer">
+                <div class="bg-info">
+                    <img src="https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=">
+                    <h1 class="bgCustom4">Consult With Doctor</h1>
+                    <p> 1 hr</p>
+                    <p> $90</p>
+                    <a th:href="@{/schedule}" class="button">Book Now</a>
+                </div>
+                <div class="bg-info">
+                    <img src="https://sunrisediagnosis.com/wp-content/uploads/Advanced-specialised-colour-dopplers.jpg">
+                    <h1 class="bgCustom4">Sonography</h1>
+                    <p> 1 hr</p>
+                    <p> $90</p>
+                    <a th:href="@{/schedule}" class="button">Book Now</a>
+                </div>
+                <div class="bg-info">
+                    <img src="https://cardiovascularbusiness.com/sites/default/files/2022-07/microsoftteams-image_3.png">
+                    <h1 class="bgCustom4">Consult With Cardiologist</h1>
+                    <p> 1 hr</p>
+                    <p> $90</p>
+                    <a th:href="@{/schedule}" class="button">Book Now</a>
+                </div>
+                <div class="bg-info">
+                    <img src="https://namas.co/wp-content/uploads/2022/02/Allard-blog-02182022-e1644527281718.png">
+                    <h1 class="bgCustom4">X-Ray Examination</h1>
+                    <p> 1 hr</p>
+                    <p> $90</p>
+                    <a th:href="@{/schedule}" class="button">Book Now</a>
+                </div>
+                <div class="bg-info">
+                    <img src="https://image.cnbcfm.com/api/v1/image/107330994-1699471414816-DSC00864-edited.jpg?v=1699471500">
+                    <h1 class="bgCustom4">MRI Examination</h1>
+                    <p> 1 hr</p>
+                    <p> $90</p>
+                    <a th:href="@{/schedule}" class="button">Book Now</a>
+                </div>
+                <div class="bg-info">
+                    <img src="https://www.orlincohen.com/wp-content/uploads/2018/11/OC1615_Neurosurgery_3_700x540.jpg">
+                    <h1 class="bgCustom4">Consult With Neurologist</h1>
+                    <p> 1 hr</p>
+                    <p> $90</p>
+                    <a th:href="@{/schedule}" class="button">Book Now</a>
+                </div>
+            </div>
         </div>
 
-        <table class="profile-table">
-            <tr>
-                <th>Patient ID:</th>
-                <td th:text="${patient.id}"></td>
-            </tr>
-            <tr>
-                <th>First Name:</th>
-                <td th:text="${patient.patient_fname}"></td>
-            </tr>
-            <tr>
-                <th>Last Name:</th>
-                <td th:text="${patient.patient_lname}"></td>
-            </tr>
-            <tr>
-                <th>Phone Number:</th>
-                <td th:text="${patient.phoneNumber}"></td>
-            </tr>
-            <tr>
-                <th>Address:</th>
-                <td th:text="${patient.address}"></td>
-            </tr>
-            <tr>
-                <th>Gender:</th>
-                <td th:text="${patient.gender}"></td>
-            </tr>
-            <tr>
-                <th>Date of Birth:</th>
-                <td th:text="${#dates.format(patient.dateOfBirth, 'yyyy-MM-dd')}"></td>
-            </tr>
-            <tr>
-                <th>Emergency Contact Name:</th>
-                <td th:text="${patient.emergencyContactName}"></td>
-            </tr>
-            <tr>
-                <th>Emergency Contact Phone:</th>
-                <td th:text="${patient.emergencyContactPhone}"></td>
-            </tr>
-        </table>
-    </div>
-</div>
+        <!-- Bookings Section -->
+        <div id="bookingsDiv" class="contentDiv" style="display: none;">
+            <h2>Your Bookings</h2>
+            <p>View all your upcoming and past appointments here.</p>
+        </div>
 
+        <!-- Health Records Section -->
+        <div id="healthRecordsDiv" class="contentDiv" style="display: none;">
+            <h2 class="bg-black">Health Records</h2>
+            <a class="button" th:href="@{/patient/health-chart/{id}(id=${patient.id})}">View Charts</a>
+            <table class="healthRecordsTable">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Doctor</th>
+                    <th>Summary</th>
+                    <th>Details</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="medicalEx : ${medicalEx}">
+                    <td th:text="${medicalEx.dateOfExamination}">2024-10-01</td>
+                    <td>Dr. Jane Smith</td>
+                    <td>General Checkup</td>
+                    <td th:text="${medicalEx.medicalHistory}">Blood pressure normal, recommended follow-up in 6 months. </td>
+                    <td>
+                        <a class="viewButton">
+                            <img th:src="@{/image/view.png}" alt="View" class="bIcon">
+                        </a>
+                    </td>
+
+                </tr>
+                </tbody>
+                </table>
+        </div>
+
+        <!-- Prescription Records Section -->
+        <div id="prescriptionDiv" class="contentDiv " style="display: none;">
+            <h2>Prescription Records</h2>
+            <p>View all your prescribed medications.</p>
+        </div>
+    </div>
+
+</section>
+<footer>
+    <p class="footerP1">
+
+        <img th:src="@{/image/copyright.png}" class="footerIcon"> 2024 by CWM Health Medical Center <br>
+        <a href="https://maps.app.goo.gl/PuTPEBo4rdqJWExb8">
+            <img th:src="@{/image/location.png}" class="footerIcon" alt="locationIcon">123 Health Management Street, Waimanu Rd, Suva  </a>
+        <span class="tab-space"></span><img th:src="@{/image/phone.png}" alt="phoneIcon" class="footerIcon"> Tel: 987-654-3210
+
+        <span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span><span class="tab-space"></span>
+
+        <a href="https://www.facebook.com/pages/CWM%20Hospital,%20Suva,%20Fiji/447406538605734/"><img th:src="@{/image/facebook.png}" alt="facebookIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/twitter.png}" alt="xIcon" class="footerIcon1"></a>
+        &nbsp;&nbsp;&nbsp;
+        <a href=""><img th:src="@{/image/instagram.png}" alt="xIcon" class="footerIcon1"></a>
+    </p>
+
+</footer>
+
+<!--  Java script links  -->
+<script th:src="@{/js/dashboard.js}"></script>
 </body>
 </html>

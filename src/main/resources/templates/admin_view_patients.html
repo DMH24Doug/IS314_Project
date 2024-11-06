@@ -22,7 +22,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <button><a th:href="@{/admin/dashboard}">Dashboard</a></button>
-        <button class="active"><a th:href="@{/admin/view_patientList}">View Patients</a></button>
+        <button class="active"><a th:href="@{/admin/patientList}">View Patients</a></button>
         <button><a th:href="@{/admin/view_doctorList}">View Doctors</a></button>
         <button>Manage Appointments</button>
         <button>Manage Payments</button>
@@ -41,7 +41,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="patient : ${patients}">
+            <tr th:each="patient : ${patient}">
                 <td th:text="${patient.id}"></td>
                 <td th:text="${patient.patient_fname}"></td>
                 <td th:text="${patient.patient_lname}"></td>

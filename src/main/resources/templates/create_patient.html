@@ -20,7 +20,19 @@
         <a href="home.html" >Back Home</a>
     </div>
     <div>
-        <form role="form" method="post" th:action="@{/patient/create}" th:object="${patient}" class="registrationForm" onsubmit="return validateForm()" novalidate>
+
+        <form role="form" method="post" th:action="@{/patient/create}" th:object="${patient}" class="registrationForm" onsubmit="return validateForm()"   enctype="multipart/form-data"  novalidate>
+            <!-- Profile Image Upload Field -->
+            <div class="formRow">
+                <div class="formGroup">
+                    <label for="imageFile">Upload Profile Image:</label>
+                    <input type="file" id="imageFile" name="imageFile" accept="image/*">
+                    <span class="error-message" id="imageFile-error" style="display: none;">
+                        Please upload a valid image.
+                    </span>
+                </div>
+                <div class="formGroup"></div>
+            </div>
             <div class="formRow">
                 <div class="formGroup">
                     <label for="fname">First Name:</label>

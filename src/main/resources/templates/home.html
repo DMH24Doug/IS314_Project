@@ -21,11 +21,26 @@
     <nav>
         <ul>
             <li><a th:href="@{/}">Home</a></li>
-            <li ><a th:href="@{/department}">Departments</a></li>
+            <li><a th:href="@{/department}">Departments</a></li>
             <li><a th:href="@{/about}">About Us</a></li>
             <li><a th:href="@{/contact}">Contact</a></li>
-            <li><a th:href="@{/login}">Sign In</a></li>
+            <li th:if="${username == null}"><a th:href="@{/login}">Sign In</a></li>
         </ul>
+            <!-- Profile Picture Button in Navbar -->
+            <div class="accountDropdown" th:if="${username != null}">
+                <button class="accountButton" onclick="toggleDropdown()">
+                    <img th:src="@{${image}}" th:alt="@{/image/profile}">
+                </button>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <ul>
+                        <li><a th:href="'/patient/patient_home/' + ${id}">Dashboard</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a th:href="@{/logout}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
     </nav>
     <div class="imageContainer">
         <h1></h1>
@@ -96,7 +111,7 @@
 <a th:href="@{/register}" class="floating-btn">Register Now</a>
 <script th:src="@{/js/jsFunctions.js}"></script>
 <script th:src="@{/js/imageSlide.js}"></script>
-
+<script th:src="@{/js/dashboard.js}"></script>
 
 </body>
 </html>

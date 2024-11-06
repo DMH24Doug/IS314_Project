@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CWM Department Page</title>
-  <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/color.css}">
     <link rel="stylesheet" th:href="@{/css/scroller.css}">
@@ -24,8 +24,22 @@
       <li ><a th:href="@{/department}">Departments</a></li>
       <li><a th:href="@{/about}">About Us</a></li>
       <li><a th:href="@{/contact}">Contact</a></li>
-      <li><a th:href="@{/login}">Sign In</a></li>
+      <li th:if="${username == null}"><a th:href="@{/login}">Sign In</a></li>
     </ul>
+    <!-- Profile Picture Button in Navbar -->
+    <div class="accountDropdown" th:if="${username != null}">
+      <button class="accountButton" onclick="toggleDropdown()">
+        <img th:src="@{${image}}" th:alt="@{/image/profile}">
+      </button>
+      <div id="dropdownMenu" class="dropdown-content">
+        <ul>
+          <li><a th:href="'/patient/patient_home/' + ${id}">Dashboard</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+
   </nav>
   <div class="myContainer">
     <h1>Health Departments</h1>

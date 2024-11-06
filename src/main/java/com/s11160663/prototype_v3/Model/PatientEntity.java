@@ -35,18 +35,19 @@ public class PatientEntity {
     private String emergencyContactPhone;
 
 
+    private String profileImagePath;  // Field to store the uploaded image as binary
     //1-1 relationship to user Entity
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 
-    //M-M relationship to prescriptions Entity
-    @ManyToMany(mappedBy="patient")
-    private List<PrescriptionEntity> prescriptions = new ArrayList<>();
+    //M-M relationship to examination Entity
+    @OneToMany(mappedBy="patient" , cascade = CascadeType.ALL)
+    private List<MedicalExaminationEntity> examinations = new ArrayList<>();
 
     //M-M relationship to schedules Entity
-    @ManyToMany(mappedBy="patient")
-    private List<PrescriptionEntity> schedules = new ArrayList<>();
+    @OneToMany(mappedBy="patient")
+    private List<ScheduleEntity> schedules = new ArrayList<>();
 
 
 }

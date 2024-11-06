@@ -1,0 +1,51 @@
+.healthRecordsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: #040404;
+}
+
+.healthRecordsTable th,
+.healthRecordsTable td {
+    padding: 12px;
+    text-align: left;
+}
+
+.healthRecordsTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+
+}
+
+.healthRecordsTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.viewButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.viewButton img.bIcon {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+    border-radius: 50%; /* Makes it circular */
+    background-color: #d5cfcf;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.viewButton:hover img.bIcon {
+    transform: scale(1.2);
+}
+
+.right{
+    text-align: right;
+}

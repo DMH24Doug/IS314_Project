@@ -34,7 +34,7 @@
     <div class="form-group">
       <button class="action-button"><a th:href="@{/admin/register_doctor}">Add Doctor</a></button>
     </div>
-    <table class="profile-table">
+    <table >
       <thead>
       <tr>
         <th>ID</th>
@@ -44,7 +44,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="doctor : ${doctors}">
+      <tr th:each="doctor : ${doctor}">
         <td th:text="${doctor.id}"></td>
         <td th:text="${doctor.doctor_fname}"></td>
         <td th:text="${doctor.doctor_lname}"></td>

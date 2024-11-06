@@ -1,6 +1,7 @@
 package com.s11160663.prototype_v3.Service.Implementation;
 
 import com.s11160663.prototype_v3.DTO.RegistrationDTO;
+import com.s11160663.prototype_v3.Model.MedicationEntity;
 import com.s11160663.prototype_v3.Model.PatientEntity;
 import com.s11160663.prototype_v3.Model.Roles;
 import com.s11160663.prototype_v3.Model.UserEntity;
@@ -32,9 +33,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(RegistrationDTO registrationDto) {
 
         UserEntity user = new UserEntity();
-        PatientEntity patient = new PatientEntity();
         Roles role = roleRepository.findByName("PATIENT");
-
 
         user.setName(registrationDto.getUsername());
         user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
@@ -50,7 +49,6 @@ public class UserServiceImpl implements UserService {
     public void saveDoctor(RegistrationDTO registrationDto) {
 
         UserEntity user = new UserEntity();
-        PatientEntity patient = new PatientEntity();
         Roles role = roleRepository.findByName("EMPLOYEE");
 
 
@@ -72,8 +70,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity findByUsername(String username) {
-        return userRepository.findByName(username);
+        return userRepository.findByName(username).orElse(null);
     }
+
+
 
 
 }

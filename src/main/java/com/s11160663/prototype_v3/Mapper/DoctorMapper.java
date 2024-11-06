@@ -18,7 +18,8 @@ public class DoctorMapper {
                 .address(doctorDTO.getAddress())
                 .emergencyContactPhone(doctorDTO.getEmergencyContactPhone())
                 .emergencyContactName(doctorDTO.getEmergencyContactName())
-                .createdBy(doctorDTO.getCreatedBy())
+                .user(doctorDTO.getUser_id())
+                .profileImagePath(doctorDTO.getProfileImagePath())
                 .build();
     }
     //returns employee details from employee to employee data objects
@@ -33,7 +34,9 @@ public class DoctorMapper {
                 .address(doctor.getAddress())
                 .phoneNumber(doctor.getPhoneNumber())
                 .emergencyContactName(doctor.getEmergencyContactName())
-                .createdBy(doctor.getCreatedBy())
+                .emergencyContactPhone(doctor.getEmergencyContactPhone())
+                .user_id(doctor.getUser())
+                .profileImagePath(doctor.getProfileImagePath())
                 .build();
     }
 }

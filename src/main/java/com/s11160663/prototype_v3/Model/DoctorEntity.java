@@ -6,6 +6,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,9 +31,13 @@ public class DoctorEntity {
     private String phoneNumber;
     private String emergencyContactName;
     private String emergencyContactPhone;
+    private String profileImagePath;
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
-    private UserEntity createdBy;
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
+
+    @OneToMany(mappedBy = "doctors")
+    private List<MedicalExaminationEntity> medicalExaminations;
 
 }

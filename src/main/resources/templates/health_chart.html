@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+  <link rel="stylesheet" th:href="@{/css/chart.css}">
+  <title>Patient Health Metrics</title>
+
+</head>
+<body>
+
+<h2>Patient: <span th:text="${patient.patient_fname} + ' ' + ${patient.patient_lname}"> Patient Name </span> Health Metrics</h2>
+
+<!-- Weight Chart -->
+<div class="chart-container">
+  <h3>Weight (kg) Over Time</h3>
+  <svg viewBox="0 0 800 300">
+    <g class="axis">
+      <line x1="50" y1="250" x2="750" y2="250"></line>  <!-- X-axis -->
+      <line x1="50" y1="50" x2="50" y2="250"></line>    <!-- Y-axis -->
+      <text x="30" y="55">100 kg</text>
+      <text x="30" y="250">50 kg</text>
+      <text x="30" y="150">75 kg</text>
+    </g>
+    <line x1="50" y1="150" x2="750" y2="150" class="normal-line"></line>
+
+    <g th:each="record, iterStat : ${healthRecords}">
+      <circle th:attr="cx=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, cy=${250 - (record.weight * 2)}, r=5"></circle>
+      <line th:if="${iterStat.index > 0}"
+            th:attr="x1=${50 + (iterStat.index - 1) * (700 / (healthRecords.size() - 1))}, y1=${250 - (healthRecords[iterStat.index - 1].weight * 2)},
+                      x2=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, y2=${250 - (record.weight * 2)}"
+            class="connecting-line" stroke="blue" stroke-width="2"
+            style="animation-delay: ${iterStat.index * 0.3}s" ></line>
+      <text th:attr="x=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, y=270, text-anchor='middle'" th:text="${record.dateOfExamination}"></text>
+    </g>
+  </svg>
+</div>
+
+<!-- Heart Rate Chart -->
+<div class="chart-container">
+  <h3>Heart Rate (bpm) Over Time</h3>
+  <svg viewBox="0 0 800 300">
+    <g class="axis">
+      <line x1="50" y1="250" x2="750" y2="250"></line>
+      <line x1="50" y1="50" x2="50" y2="250"></line>
+      <text x="30" y="55">100 bpm</text>
+      <text x="30" y="250">40 bpm</text>
+      <text x="30" y="150">70 bpm</text>
+    </g>
+    <line x1="50" y1="150" x2="750" y2="150" class="normal-line"></line>
+
+    <g th:each="record, iterStat : ${healthRecords}">
+      <circle th:attr="cx=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, cy=${250 - record.heartRate}, r=5"></circle>
+      <line th:if="${iterStat.index > 0}"
+            th:attr="x1=${50 + (iterStat.index - 1) * (700 / (healthRecords.size() - 1))}, y1=${250 - healthRecords[iterStat.index - 1].heartRate},
+                      x2=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, y2=${250 - record.heartRate}"
+            class="connecting-line" stroke="red" stroke-width="2"
+            style="animation-delay: ${iterStat.index * 0.3}s"></line>
+      <text th:attr="x=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, y=270, text-anchor='middle'" th:text="${record.dateOfExamination}"></text>
+    </g>
+  </svg>
+</div>
+
+<!-- Systolic BP Chart -->
+<div class="chart-container">
+  <h3>Systolic Blood Pressure (mmHg) Over Time</h3>
+  <svg viewBox="0 0 800 300">
+    <g class="axis">
+      <line x1="50" y1="250" x2="750" y2="250"></line> <!-- X-axis -->
+      <line x1="50" y1="50" x2="50" y2="250"></line> <!-- Y-axis -->
+      <text x="30" y="55">180 mmHg</text> <!-- High -->
+      <text x="30" y="250">90 mmHg</text> <!-- Low -->
+      <text x="30" y="150">120 mmHg</text> <!-- Normal -->
+    </g>
+    <line x1="50" y1="150" x2="750" y2="150" class="normal-line"></line> <!-- Normal Range -->
+
+    <g th:each="record, iterStat : ${healthRecords}">
+      <circle
+              th:attr="cx=${50 + iterStat.index * (700 / (healthRecords.size() - 1))},
+                  cy=${250 - record.systolicBP1}, r=5"
+      ></circle>
+
+      <!-- Connecting Lines -->
+      <line
+              th:if="${iterStat.index > 0}"
+              th:attr="
+          x1=${50 + (iterStat.index - 1) * (700 / (healthRecords.size() - 1))},
+          y1=${250 - healthRecords[iterStat.index - 1].systolicBP1},
+          x2=${50 + iterStat.index * (700 / (healthRecords.size() - 1))},
+          y2=${250 - record.systolicBP1}
+        "
+              class="connecting-line" stroke="green" stroke-width="2"
+              style="animation-delay: ${iterStat.index * 0.3}s"
+      ></line>
+      <text th:attr="x=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, y=270, text-anchor='middle'" th:text="${record.dateOfExamination}"></text>
+    </g>
+  </svg>
+</div>
+
+
+<!-- Diastolic BP Chart -->
+<div class="chart-container">
+  <h3>Diastolic Blood Pressure (mmHg) Over Time</h3>
+  <svg viewBox="0 0 800 300">
+    <g class="axis">
+      <line x1="50" y1="250" x2="750" y2="250"></line> <!-- X-axis -->
+      <line x1="50" y1="50" x2="50" y2="250"></line> <!-- Y-axis -->
+      <text x="30" y="55">120 mmHg</text> <!-- High -->
+      <text x="30" y="250">60 mmHg</text> <!-- Low -->
+      <text x="30" y="150">80 mmHg</text> <!-- Normal -->
+    </g>
+    <line x1="50" y1="150" x2="750" y2="150" class="normal-line"></line> <!-- Normal Range -->
+
+    <g th:each="record, iterStat : ${healthRecords}">
+      <circle
+              th:attr="cx=${50 + iterStat.index * (700 / (healthRecords.size() - 1))},
+                  cy=${250 - record.diastolicBP1}, r=5"
+      ></circle>
+
+      <!-- Connecting Lines -->
+      <line
+              th:if="${iterStat.index > 0}"
+              th:attr="
+          x1=${50 + (iterStat.index - 1) * (700 / (healthRecords.size() - 1))},
+          y1=${250 - healthRecords[iterStat.index - 1].diastolicBP1},
+          x2=${50 + iterStat.index * (700 / (healthRecords.size() - 1))},
+          y2=${250 - record.diastolicBP1}
+        "
+              class="connecting-line" stroke="purple" stroke-width="2"
+              style="animation-delay: ${iterStat.index * 0.3}s"
+      ></line>
+      <text th:attr="x=${50 + iterStat.index * (700 / (healthRecords.size() - 1))}, y=270, text-anchor='middle'" th:text="${record.dateOfExamination}"></text>
+    </g>
+  </svg>
+</div>
+
+
+<div class="footer">
+  <p>Each chart shows a different health metric over time with normal range indicated by the dashed line.</p>
+</div>
+
+</body>
+</html>

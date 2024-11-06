@@ -21,6 +21,8 @@ public class DoctorDTO {
     private String phoneNumber;
     private String emergencyContactName;
     private String emergencyContactPhone;
-    private UserEntity createdBy;
+    private String emergencyContactEmail;
+    private String profileImagePath;;
+    private UserEntity user_id;
 
 }

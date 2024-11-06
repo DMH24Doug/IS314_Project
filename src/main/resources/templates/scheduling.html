@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" th:href="@{/image/favicon.ico}">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/scheduling.css}">
+  <link rel="stylesheet" th:href="@{/css/scroller.css}">
+  <title>Book Appointment</title>
+
+</head>
+<body>
+<header>
+
+  <div id="myHeader">
+    <img th:src="@{/image/logo.PNG}" id="myLogo" alt="cwm logo" class="logo">
+    <h3 >CWM HEALTH MEDICAL CENTER</h3>
+  </div>
+</header>
+<div class="headerSchedule">
+  <h1>Schedule Booking</h1>
+</div>
+<div class="bookNowContainer">
+  <div class="selectionSection">
+    <!-- Info group with service details on the left and back link on the right -->
+    <div class="infoGroup">
+      <div class="serviceDetails">
+        <span>Service: Consult with Doctor</span>
+        <span class="servicePrice">Price: $90 FJD</span>
+      </div>
+      <a href="patient_dashboard.html" class="backLink">Back</a>
+    </div>
+
+    <!-- Calendar and Time Slots in a Row -->
+    <div class="calendarTimeWrapper">
+      <!-- Calendar Container -->
+      <div class="calendar-container">
+        <h1>Select Date</h1>
+        <div class="calendar-nav">
+          <button id="prevButton" onclick="changeMonth(-1)">Previous</button>
+          <span id="monthYear"></span>
+          <button onclick="changeMonth(1)">Next</button>
+        </div>
+
+        <div id="calendar"></div>
+      </div>
+
+      <!-- Time Slot Container -->
+      <div class="timeSlot-container">
+        <h1>Select Time</h1>
+        <div class="timeSlot" id="timeSlot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Section -->
+  <div class="summarySection">
+    <div class="summaryContainer" id="summaryContainer">
+      <h2>Booking Summary</h2>
+      <p id="summaryTitle">Service: Consult with Doctor</p>
+      <p id="summaryAmount">Amount: $90 FJD</p>
+      <p id="summaryDate">Date: Not Selected</p>
+      <p id="summaryTime">Time: Not Selected</p>
+    </div>
+
+    <div class="buttonSchedule">
+      <button class="buttonNext" onclick="confirmSelection()">Next (Payment)</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/scheduling.js"></script>
+
+</body>
+</html>
